@@ -1,0 +1,490 @@
+\chapter{Homomorphisms}
+Homomorphisms in group theory serve to preserve the algebraic structure between groups, ensuring that the operation on elements in one group translates consistently to another. They facilitate the study of group relationships and properties, revealing insights into symmetry and structure through concepts like kernels and images. Beyond theoretical applications, homomorphisms play a crucial role in practical fields such as cryptography and physics, illustrating their broad relevance and significance in both pure mathematics and applied sciences.
+
+\section{Definition of Homomorphism}
+\textbf{Definition:} A mapping \( \phi \) from a group \( G \) into a group \( C \) is said to be a homomorphism if for all \( a, b \in G \),
+\[ \phi(ab) = \phi(a) \cdot \phi(b). \]
+\textbf{\textit{Remark: }}In a homomorphism \( \phi \) between groups \( G \) and \( C \), \( \phi(ab) \) computes the product using \( G \)'s operation, while \( \phi(a) \cdot \phi(b) \) uses \( C \)'s operation, illustrating how \( \phi \) maps operations between the groups while preserving their algebraic structures.
+\section{Kernel}
+The kernel of a homomorphism in group theory is crucial as it identifies elements in the domain group that map to the identity in the codomain. It serves to study the structure of the group, determines the homomorphism's injectivity and surjectivity, and finds applications in cryptography and algorithm design.
+\\\\
+\textbf{Definition:} If \( \phi \) is a homomorphism from a group \( G \) to a group \( G' \), the kernel of \( \phi \), denoted as \( \text{ker}(\phi) \), is defined by
+\[ \text{ker}(\phi) = \{ x \in G \mid \phi(x) = e' \}, \]
+where \( e' \) is the identity element of \( G' \).
+\\
+\section{Some Important Lemmas}
+\textbf{Lemma 1:} Suppose \( G \) is a group, \( N \) a normal subgroup of \( G \). Define \( \phi: G \to G/N \) by \( \phi(x) = Nx \) for all \( x \in G \). Then \( \phi \) is a homomorphism of \( G \) onto \( G/N \).
+\\
+\textbf{Proof.} \\
+\( \phi \) is onto \( G/N \): For any \( X \in G/N \), there exists \( y \in G \) such that \( X = Ny \). Hence, \( X = \phi(y) \), proving \( \phi \) is onto.
+\\
+\( \phi \) preserves multiplication: For \( x, y \in G \),
+   \[ \phi(xy) = Nxy = NxNy = \phi(x)\phi(y). \]
+Therefore, \( \phi \) preserves the group operation, confirming it is a homomorphism from \( G \) onto \( G/N \).
+\\\\
+\textbf{Lemma 2:} If \( \phi \) is a homomorphism from \( G \) to \( G' \), then:
+\begin{enumerate}
+    \item \( \phi(e) = e' \), where \( e \) and \( e' \) are the identity elements of \( G \) and \( G' \), respectively.
+    \item \( \phi(x^{-1}) = \phi(x)^{-1} \) for all \( x \in G \).
+\end{enumerate}
+\textbf{Proof.}
+
+1. To prove \( \phi(e) = e' \), calculate \( \phi(x)e = \phi(x) = \phi(xe) = \phi(x)\phi(e) \). By cancellation in \( G' \), \( \phi(e) = e' \).
+
+2. For \( \phi(x^{-1}) = \phi(x)^{-1} \), note \( e' = \phi(e) = \phi(xx^{-1}) = \phi(x)\phi(x^{-1}) \). By the definition of \( \phi(x^{-1}) \) in \( G' \), we get \( \phi(x^{-1}) = \phi(x)^{-1} \).
+
+Therefore, \( \phi \) satisfies both properties (1) and (2), confirming it as a homomorphism.
+\\\\
+\textbf{Lemma 3:} If \( \phi \) is a homomorphism from \( G \) to \( G' \) with kernel \( K \), then \( K \) is a normal subgroup of \( G \).
+\\
+\textbf{Proof.}
+\\
+   \textit{Closure:} If \( x, y \in K \), then \( \phi(x) = e \) and \( \phi(y) = e \), where \( e \) is the identity element of \( G \). Therefore, \( \phi(xy) = \phi(x)\phi(y) = ee = e \), so \( xy \in K \).
+\\ 
+   \textit{Inverses:} If \( x \in K \), then \( \phi(x) = e \). By Lemma 2, \( \phi(x^{-1}) = \phi(x)^{-1} = e^{-1} = e \), so \( x^{-1} \in K \). Hence, \( K \) is a subgroup of \( G \).  
+\\   
+   For any \( g \in G \) and \( k \in K \), \( \phi(gkg^{-1}) = \phi(g)\phi(k)\phi(g)^{-1} = \phi(g)e\phi(g)^{-1} = e \). Thus, \( gkg^{-1} \in K \), proving \( K \) is normal in \( G \).\\
+Therefore, \( K \) is a normal subgroup of \( G \).
+\\\\
+\textbf{Lemma 4:} If \( \phi \) is a homomorphism of \( G \) onto \( C \) with kernel \( K \), then the set of all inverse images of \( g \in C \) under \( \phi \) in \( G \) is given by \( Kx \), where \( x \) is any particular inverse image of \( g \) in \( G \).
+\\
+\textbf{Proof.}
+Let \( g \in C \) and \( x \in G \) such that \( \phi(x) = g \).
+
+   For any \( k \in K \), \( \phi(k) = e \) (identity in \( C \)). Consider \( kx \):
+   \[
+   \phi(kx) = \phi(k)\phi(x) = eg = g.
+   \]
+   Hence, \( kx \in \phi^{-1}(g) \). Therefore, \( Kx \subseteq \phi^{-1}(g) \).
+
+   Let \( y \in \phi^{-1}(g) \), meaning \( \phi(y) = g \). Since \( \phi(x) = g \), we have:
+   \[
+   \phi(y) = \phi(x) \implies \phi(yx^{-1}) = \phi(y)\phi(x^{-1}) = g g^{-1} = e.
+   \]
+   Thus, \( yx^{-1} \in K \), which implies \( y \in Kx \). Therefore, \( \phi^{-1}(g) \subseteq Kx \).
+
+Since \( Kx \subseteq \phi^{-1}(g) \) and \( \phi^{-1}(g) \subseteq Kx \), we conclude that \( \phi^{-1}(g) = Kx \).
+
+\section{Isomorphism}
+Isomorphic groups have differently labeled elements, but an isomorphism acts like a dictionary that translates between these labels, enabling analogous computations in both groups. The specific mapping defining the isomorphism is crucial, so it's important to always specify this mapping when proving groups are isomorphic.
+\\\\
+\textbf{Definition:} A homomorphism \( \phi \) from \( G \) into \( C \) is said to be an isomorphism if \( \phi \) is one-to-one.
+\\\\
+\textbf{Definition:} Two groups \( G \) and \( G^* \) are said to be isomorphic if there is an isomorphism of \( G \) onto \( G^* \). In this case, we write \( G \cong G^* \).
+\\\\
+\textbf{Proposition 1:} \( G \cong G \).\\
+The identity mapping \( \phi: G \to G \) defined by \( \phi(g) = g \) for all \( g \in G \) is an isomorphism.
+\\\\
+\textbf{Proposition 2:} If \( G \cong G^* \), then \( G^* \cong G \).
+\\
+Let \( \phi: G \to G^* \) be an isomorphism. The inverse mapping \( \phi^{-1}: G^* \to G \) is also an isomorphism since \( \phi \) is bijective.
+\\\\
+\textbf{Proposition 3:} If \( G \cong G^* \) and \( G^* \cong G^{**} \), then \( G \cong G^{**} \).
+\\
+Let \( \phi: G \to G^* \) and \( \psi: G^* \to G^{**} \) be isomorphisms. The composition \( \psi \circ \phi: G \to G^{**} \) is an isomorphism since the composition of bijective mappings is bijective, and the homomorphism property is preserved under composition.
+\\\\
+\textbf{Corollary:} A homomorphism \( \phi \) of \( G \) into \( G \) with kernel \( K_\phi \) is an isomorphism of \( G \) into \( G \) if and only if \( K_\phi = \{e\} \).
+\\
+\textbf{Proof.}
+\\
+Let \( \phi \) is an isomorphism. An isomorphism is a bijective homomorphism. Since \( \phi \) is injective (one-to-one), the kernel of \( \phi \) must be \( \{e\} \). This is because if \( \phi(g) = e \) (where \( e \) is the identity element in \( G \)), then \( g \) must be the identity element in \( G \), i.e., \( g = e \). Therefore, \( K_\phi = \{e\} \).
+\\
+Now, let \( K_\phi = \{e\} \). To show that \( \phi \) is an isomorphism, we need to prove that \( \phi \) is bijective.
+
+\textit{Injective:} Let \( \phi(g_1) = \phi(g_2) \). Then, \( \phi(g_1g_2^{-1}) = e \). Since the kernel is \( \{e\} \), it follows that \( g_1g_2^{-1} = e \), implying \( g_1 = g_2 \). Therefore, \( \phi \) is injective.
+
+\textit{Surjective:} Since \( \phi \) is a homomorphism from \( G \) onto \( G \), for every \( h \in G \), there exists an element \( g \in G \) such that \( \phi(g) = h \). Therefore, \( \phi \) is surjective.\\
+Since \( \phi \) is both injective and surjective, it is bijective, hence an isomorphism.
+
+\section{First Isomorphism Theorem}
+The First Isomorphism Theorem is a fundamental result in group theory that offers deep insights into the structure of groups and their homomorphisms. It establishes a critical relationship between a group, its quotient group, and the image of a homomorphism, enabling a clearer and more simplified understanding of group structures. This theorem is pivotal in many areas of mathematics, as it provides a powerful framework for analyzing and proving the properties of groups by connecting their internal and external symmetries.
+\\\\
+\textbf{THEOREM: }Let \(\phi\) be a homomorphism of \(G\) onto \(\overline{G}\) with kernel \(K\). Then \(G / K \cong \overline{G}\).\\
+\textbf{Proof.} Consider the diagram,
+\[
+\begin{tikzcd}
+G \arrow[r, "\phi"] \arrow[d,"\sigma"] & \overline{G} \\
+G/K 
+\end{tikzcd}
+\]
+where \(\sigma(g) = Kg\).
+\[
+\begin{tikzcd}
+G \arrow[r, "\phi"] \arrow[d,"\sigma"] & \overline{G} \\
+G/K \arrow[ur, dashed, "\psi"']
+\end{tikzcd}
+\]
+Define the mapping \(\psi: G/K \xrightarrow{} \overline{G}\) by:\\
+if \(X \in G/K\), \(X = Kg\) \\then \(\psi(X) = \phi(g)\) 
+\[
+\begin{tikzcd}
+g \arrow[r] \arrow[d] & \phi(g) \\
+Kg \arrow[ur, dashed, "\psi"']
+\end{tikzcd}
+\]
+\textit{well defined:} If \( X \in G/K \), 
+
+then \(X= Kg = Kkg \) for \( k \in K \). 
+
+However, if \( X = Kg = Kg' \) for \( g, g' \in G \), 
+
+then \( \phi(x) = \langle \phi \rangle(g) \) and also \( \phi(x) = \langle \phi \rangle(g') \). 
+
+\(\psi(X) = \phi(g)\)
+
+\(\psi(X) = \phi(g')\)
+
+let \(Kg=Kg'\) then \(g=kg'\)
+
+\(\phi(g) = \phi(kg')\)
+\(= \phi(k)\phi(g')\)
+\(= \phi(g')\)
+
+Thus \(\phi(g) = \phi(g')\)
+\\
+\textit{onto:}
+If \( \overline{x} \in \overline{G} \), then \( \overline{x} = \phi(g) \) for \( g \in G \). 
+
+\( \overline{x} = \phi(g) = \psi(Kg) = \psi(X) \)\\
+Hence, surjective.
+\\
+\textit{onto:}
+Let \( \psi(gK_1) = \psi(gK_2) \) for \( gK_1, gK_2 \in G/K \).
+
+This implies:
+\[ \phi(g) = \phi(g), \]
+since \( \psi(gK_1) = \phi(g) \) and \( \psi(gK_2) = \phi(g) \).
+
+Since \( \phi \) is a homomorphism, \( \phi(g) = \phi(g) \) holds true.
+
+Now, let's analyze what \( gK_1 = gK_2 \) implies:
+
+\[ gK_1 = gK_2 \]
+\[ g^{-1}gK_1 = g^{-1}gK_2 \]
+\[ K_1 = K_2 \]
+
+Therefore, \( gK_1 = gK_2 \) implies \( K_1 = K_2 \).
+\\
+Hence, \( \psi \) is injective.\\
+\textit{Homomorphism:}
+For \( gK, hK \in G/K \),
+   \[
+   \psi(gK \cdot hK) = \psi((gh)K) = \phi(gh).
+   \]
+
+   Since \( \phi \) is a homomorphism,
+   \[
+   \phi(gh) = \phi(g)\phi(h) = \psi(gK)\psi(hK).
+   \]
+
+Therefore, \( \psi \) preserves the group operation, proving \( \psi \) is a homomorphism.
+\\Hence, we have established that \( G/K \cong G \) under the conditions where \( \phi \) is a homomorphism from \( G \) onto \( G \) with kernel \( K \).
+\\
+\\
+This establishes a direct link between homomorphic images of a group \( G \) and its normal subgroups \( N \): any homomorphic image of \( G \) can be expressed as \( G/N \). \\
+\textit{Simple groups} are then defined as those lacking nontrivial homomorphic images, thereby having no nontrivial normal subgroups. 
+
+\section{Applications}
+\textbf{1. Cauchy's Theorem for Abelian Groups}\\
+\textbf{Theorem:}
+Let $G$ be a finite abelian group and $p$ a prime number such that $p$ divides the order of $G$, denoted $o(G)$. Then, there exists an element $a \in G$ such that $a^p = e$, where $e$ is the identity element of $G$.
+\\
+\textbf{Proof.}
+The theorem is vacuously true for groups with a single element.
+Let the theorem holds for all abelian groups with fewer elements than $G$. We aim to prove it for $G$.
+
+\textit{Case 1}: $G$ is cyclic of prime order $p$:
+    $G$ has an element $a \neq e$ such that $a^p = e$.
+    
+\textit{Case 2}: $G$ has a proper subgroup $N$ such that $p$ divides $o(N)$:
+    By induction, $N$ contains an element $b \neq e$ with $b^p = e$. Hence, $b \in G$ satisfies $b^p = e$.
+    
+\textit{Case 3}: $p$ does not divide $o(N)$ for any proper subgroup $N$ of $G$:
+    $G/N$ is abelian and has an element $XN \neq N$ with $(XN)^p = N$. Therefore, $X^p = e$ in $G$.\\
+Thus, there exists $a \in G$ such that $a^p = e$.
+\\
+By induction on the order of $G$, Cauchy's theorem for abelian groups asserts the existence of an element $a \in G$ such that $a^p = e$ whenever $p$ divides $o(G)$.
+\\\\
+\textbf{2. Sylow's Theorem for Abelian Groups}
+\\
+\textbf{Theorem:} If $G$ is an abelian group of order $o(G)$, and if $p$ is a prime number such that $p^k$ divides $o(G)$ and $p^{k+1}$ does not divide $o(G)$, then $G$ has a subgroup of order $p^k$.
+\\
+\textbf{Proof.}
+\\
+\textit{Existence of Sylow $p$-subgroup:}
+   Since $G$ is abelian, all subgroups of $G$ are normal. By the fundamental properties of abelian groups and Sylow's theorems:
+
+   There exists at least one subgroup $H \subseteq G$ such that $|H| = p^m$, where $m \geq 0$ and $p^m$ is the highest power of $p$ dividing $o(G)$.
+\\
+\textit{Maximal $p$-subgroup:}
+   Let $H$ be a subgroup of $G$ such that $|H| = p^m$ and $m$ is maximal, meaning $p^m$ is the largest power of $p$ dividing $o(G)$.
+\\
+\textit{Determining $m = k$:}
+Since $p^k$ divides $o(G)$ and $p^{k+1}$ does not divide $o(G)$, $m \leq k$.
+\\
+\textit{Maximality of $H$:}
+   If $m < k$, then there would exist a subgroup of $G$ with order $p^{m+1}$, contradicting the maximality of $m$. Therefore, $m = k$.
+\\
+   Hence, $H$, with order $p^k$, is a subgroup of $G$ as required by Sylow's theorem for abelian groups.
+\\
+Therefore, $G$ indeed has a subgroup of order $p^k$, completing the proof. This subgroup $H$ is unique up to isomorphism and represents the Sylow $p$-subgroup of $G$.
+\section{Further Results and Theorems}
+\textbf{Corollary:} If \( G \) is an abelian group of order \( o(G) \) and \( p, q \) are prime divisors of \( o(G) \) such that \( p \leq q \), there is a unique subgroup of \( G \) of order \( p^\alpha \).
+\\
+\textbf{Proof.}
+\\
+\textit{Existence of Subgroup:} Since \( G \) is abelian, by the Fundamental Theorem of Finite Abelian Groups, \( G \) can be expressed as a direct product of cyclic groups:
+  \[ G \cong \mathbb{Z}_{n_1} \times \mathbb{Z}_{n_2} \times \cdots \times \mathbb{Z}_{n_k}, \]
+  where \( n_1, n_2, \ldots, n_k \) are positive integers such that \( n_1 \mid n_2 \mid \cdots \mid n_k \) and \( n_1 n_2 \cdots n_k = o(G) \).
+\\
+\textit{Prime Divisors:} Let \( o(G) = p^\alpha \cdot m \), where \( p^\alpha \) is the highest power of \( p \) dividing \( o(G) \) and \( \gcd(p, m) = 1 \). Here, \( p \) is a prime divisor of \( o(G) \).
+\\
+\textit{Structure of \( G \):} Considering \( G \) is abelian and of order \( o(G) \), there exists a subgroup of order \( p^\alpha \), as \( p^\alpha \) divides \( o(G) \). By the structure theorem, this subgroup can be identified uniquely as:
+  \[ H = \mathbb{Z}_{p^{\alpha_1}} \times \mathbb{Z}_{p^{\alpha_2}} \times \cdots \times \mathbb{Z}_{p^{\alpha_k}}, \]
+  where \( \alpha_1 + \alpha_2 + \cdots + \alpha_k = \alpha \) and \( \alpha_i \leq \alpha \) for all \( i \).
+\\
+\textit{Uniqueness:} To show uniqueness, consider any subgroup \( H' \subseteq G \) of order \( p^\alpha \). By Lagrange's theorem, the order of any subgroup of \( G \) must divide \( o(G) = p^\alpha \cdot m \). Hence, \( H' \) must have the form:
+  \[ H' = \mathbb{Z}_{p^{\alpha'_1}} \times \mathbb{Z}_{p^{\alpha'_2}} \times \cdots \times \mathbb{Z}_{p^{\alpha'_k}} \]
+  with \( \alpha'_1 + \alpha'_2 + \cdots + \alpha'_k = \alpha \) and \( \alpha'_i \leq \alpha \) for all \( i \).
+\\
+  Since \( p \) is a prime and \( p^{\alpha_i} \) are the primary cyclic components that make up the subgroup of order \( p^\alpha \), any other subgroup of order \( p^\alpha \) in \( G \) must have the same cyclic structure, up to isomorphism.
+\\
+Therefore, \( H \) is the unique subgroup of \( G \) of order \( p^\alpha \).
+\\
+\\
+\textbf{Lemma 5:}
+Let \( \varphi: G \to G' \) be a surjective homomorphism with kernel \( K \). For a subgroup \( f \subseteq G \), define \( H = \{ x \in G \mid \varphi(x) \in f \} \).
+\\
+\textbf{Proof.}
+{\( H \) is a subgroup of \( G \):}
+   \\
+   \textit{Closure:} Take \( x, y \in H \). This implies \( \varphi(x), \varphi(y) \in f \). Since \( f \) is a subgroup of \( G \), \( \varphi(x) \cdot \varphi(y) \in f \). Therefore, \( \varphi(xy) = \varphi(x) \cdot \varphi(y) \in f \), implying \( xy \in H \). Thus, \( H \) is closed under multiplication.
+   \\
+   \textit{Identity:} \( \varphi(e) = e' \), where \( e \) is the identity in \( G \) and \( e' \) is the identity in \( G' \). Hence, \( e \in H \).
+   \\
+   \textit{Inverses:} If \( x \in H \), then \( \varphi(x) \in f \). Since \( f \) is closed under inverses in \( G \), \( \varphi(x)^{-1} \in f \). Thus, \( x^{-1} \in H \).
+
+
+\( H \subseteq K \):
+   If \( x \in H \), then \( \varphi(x) \in f \). By the definition of \( K \) as \( \ker(\varphi) \), \( x \in K \).\\
+{If \( f \) is normal in \( G \), then \( H \) is normal in \( G \):}
+   If \( f \) is normal in \( G \), for any \( g \in G \), \( gfg^{-1} \subseteq f \).
+   
+   Take \( h \in H \), so \( \varphi(h) \in f \). For \( g \in G \),
+     \[
+     \varphi(ghg^{-1}) = \varphi(g) \varphi(h) \varphi(g^{-1}).
+     \]
+   
+   Since \( \varphi \) is a homomorphism, \( \varphi(ghg^{-1}) = \varphi(g) \varphi(h) \varphi(g)^{-1} \).
+   
+   \( \varphi(h) \in f \) and \( f \) is normal, so \( \varphi(g) \varphi(h) \varphi(g)^{-1} \in f \).
+
+   Hence, \( ghg^{-1} \in H \), showing \( H \) is normal in \( G \).\\
+{One-to-one correspondence:}
+
+   Define \( \psi: \{ \text{Subgroups of } G \text{ containing } K \} \to \{ \text{Subgroups of } G' \} \) by \( \psi(H) = \varphi(H) \).
+   
+   \( \psi \) is well-defined because if \( H \) contains \( K \), then \( \varphi(H) \) is a subgroup of \( G' \).
+   
+   \( \psi \) is injective: If \( \psi(H_1) = \psi(H_2) \), then \( \varphi(H_1) = \varphi(H_2) \). Hence, \( H_1 = H_2 \) because \( \varphi \) is surjective.
+   
+   \( \psi \) is surjective: For any subgroup \( f' \subseteq G' \), \( \varphi^{-1}(f') \) is a subgroup of \( G \) containing \( K \), and \( \psi(\varphi^{-1}(f')) = f' \).
+\\\\
+\textbf{Theorem 2}: Let $\varphi: G \to G'$ be a homomorphism of $G$ onto $G'$ with kernel $K$, and let $N$ be a normal subgroup of $G$. Then $G/N \cong (G/K)/(N/K)$.
+\\
+\textbf{Proof.}
+   Given \(G\) and \(N\) where \(N = \{ x \in G \mid \phi(x) \in N' \}\), we first define a homomorphism \(\theta\) from \(G\) onto \(G/N\) by \(\theta(g) = Ng\).
+\\
+   Next, we define a mapping \(\psi : G \to G'/N'\) by \(\psi(g) = N'\phi(g)\) for all \(g \in G\).
+\\
+   To show \(\psi\) is onto, take any \(g' \in G'\). Since \(\phi\) is onto, there exists some \(g \in G\) such that \(\phi(g) = g'\). Hence, any element \(N'g'\) in \(G'/N'\) can be written as \(N'\phi(g) = \psi(g)\), proving \(\psi\) is onto.
+\\
+   To verify \(\psi\) is a homomorphism, for \(a, b \in G\),
+   \[
+   \psi(ab) = N'\phi(ab)
+   \]
+   Since \(\phi\) is a homomorphism,
+   \[
+   \phi(ab) = \phi(a)\phi(b)
+   \]
+   Therefore,
+   \[
+   \psi(ab) = N'\phi(a)\phi(b) = N'\phi(a)N'\phi(b) = \psi(a)\psi(b)
+   \]
+   Hence, \(\psi\) is a homomorphism.
+\\
+   Determine the kernel \(T\) of \(\psi\):
+   - If \(n \in N\), then \(\phi(n) \in N'\), so \(\psi(n) = N'\phi(n) = N'\), the identity element of \(G'/N'\). Thus, \(N \subseteq T\).
+   - Conversely, if \(t \in T\), then \(\psi(t) = N'\), meaning \(N'\phi(t) = N'\). This implies \(\phi(t) \in N'\), hence \(t \in N\). Thus, \(T \subseteq N\).
+
+   Therefore, the kernel \(T\) of \(\psi\) is \(N\).
+\\
+   Since \(\psi\) is a homomorphism of \(G\) onto \(G'/N'\) with kernel \(N\), by the First Isomorphism Theorem, we have:
+   \[
+   G/N \cong G'/N'
+   \]
+\\
+   From the First Isomorphism Theorem again, \(\phi\) induces an isomorphism between \(G/N\) and \((G/K)/(N'/K)\).
+\\
+\section{Commutator of a Group}
+
+In group theory, the commutator of two elements \(a\) and \(b\) in a group \(G\) is an element that measures the "difference" between \(a\) and \(b\) commuting. The commutator of \(a\) and \(b\) is denoted by \([a, b]\) and is defined as:
+\[ [a, b] = a^{-1}b^{-1}ab \]
+\textbf{Properties of Commutators:}\\
+\textit{Identity Element:}
+   \[
+   [a, a] = e
+   \]
+ \textit{Inverse:}
+   \[
+   [a, b] = [b, a]^{-1}
+   \]
+\textit{Normal Subgroup:}
+   The set of all commutators in \(G\) forms a normal subgroup of \(G\), known as the commutator subgroup or the derived subgroup, denoted by \(G'\) or \([G, G]\).
+\\
+\textit{Abelian Groups:}
+   A group \(G\) is abelian if and only if all commutators are the identity element, i.e., \([a, b] = e\) for all \(a, b \in G\).
+\\\\
+\textbf{Commutator Subgroup}
+
+The commutator subgroup \(G'\) (also denoted \([G, G]\)) is the subgroup generated by all commutators of the group \(G\).
+\[ G' = \langle [a, b] \mid a, b \in G \rangle \]
+\\
+\textbf{Examples of Commutator Group}
+\\
+1. \textbf{Symmetric Group \(S_3\):}
+   In the symmetric group \(S_3\), the commutator subgroup is \(A_3\), the alternating group, which consists of the even permutations.
+\\
+2. \textbf{Matrix Groups:}
+   In the general linear group \(GL(n, \mathbb{R})\), commutators often play a significant role in studying the structure and properties of the group.
+
+\section{Few Examples}
+1. Suppose that \( p \) is a prime number greater than 3. Consider the multiplicative group \( G = (\mathbb{Z}/p\mathbb{Z})^* \) of order \( p-1 \).
+
+\begin{enumerate}
+    \item[(a)] Prove that the set of squares \( S = \{ x^2 \mid x \in G \} \) is a subgroup of the multiplicative group \( G \).
+    
+    \item[(b)] Determine the index \( [G : S] \).
+    
+    \item[(c)] Assume that \( -1 \notin S \). Then prove that for each \( a \in G \), we have either \( a \in S \) or \( -a \in S \).
+\end{enumerate}
+\textit{(a)} \( G = (\mathbb{Z}/p\mathbb{Z})^* \)\\
+\( S = \{ x^2 \mid x \in G \} \)
+\\
+\textit{Non-empty:} Since \( G \) includes \( 1 \), \( 1^2 = 1 \in S \), so \( S \) is non-empty.
+\\
+\textit{Closure:} For \( a^2, b^2 \in S \) (\( a, b \in G \)), \( (ab)^2 = a^2 b^2 \in S \) because \( ab \in G \).
+\\
+\textit{Inverses:} If \( x^2 \in S \), then \( (x^2)^{-1} = (x^{-1})^2 \in S \), since \( x^{-1} \in G \).
+\\
+Thus, \( S \) is a subgroup of \( G \).
+\\
+\textit{(b)} \( |G| = p - 1 \) \\
+and \( |S| = \frac{p - 1}{2} \), and \( [G : S] = \frac{|G|}{|S|} = 2 \).
+\\
+(c) Given \( -1 \notin S \), \( S \) is a subgroup of index 2 in \( G \). Hence, \( G \) is partitioned into cosets \( S \) and \( G \setminus S \).
+
+For \( a \in G \):
+- If \( a \in S \), then \( a \in S \).
+- If \( a \notin S \), then \( a \in G \setminus S \), and hence \( -a = (-1) \cdot a \in S \) because \( -1 \in G \setminus S \).
+
+Therefore, for any \( a \in G \), either \( a \in S \) or \( -a \in S \).
+\\
+\\
+2. Let \( G \) be the group of positive real numbers under multiplication, and let \( (\mathbb{R}, +) \) be the group of all real numbers under addition. Define \( \varphi : G \to \mathbb{R} \) by \( \varphi(x) = \log x \).
+\\
+For \( x, y \in G \),
+    \[
+    \varphi(xy) = \log(xy) = \log(x) + \log(y) = \varphi(x) + \varphi(y).
+    \]
+    Since the operation on the right side is addition in \( \mathbb{R} \), \( \varphi \) is a homomorphism of \( G \) into \( \mathbb{R} \).
+\\
+\( \varphi \) is one-to-one and onto, establishing it as an isomorphism between \( G \) and \( \mathbb{R} \).
+\\
+\\
+3. Let \( G \) be any group, and let \( g \) be a fixed element in \( G \). Define \( \varphi_g : G \to G \) by \( \varphi_g(x) = gxg^{-1} \). Prove that \( \varphi_g \) is an isomorphism of \( G \) onto \( G \).
+\\
+Let \( G \) be any group, and let \( g \) be a fixed element in \( G \). Define \( \varphi_g : G \to G \) by \( \varphi_g(x) = gxg^{-1} \).
+\\
+\( x, y \in G \):
+    \[
+    \varphi_g(xy) = g(xy)g^{-1} = (gxg^{-1})(gyg^{-1}) = \varphi_g(x) \varphi_g(y).
+    \]
+    Therefore, \( \varphi_g \) preserves the group operation, hence it is a homomorphism.
+    \\
+    Let \( \varphi_g(x) = \varphi_g(y) \). Then \( gxg^{-1} = gyg^{-1} \), which implies \( x = y \). Thus, \( \varphi_g \) is injective.
+    \\
+    For any \( h \in G \), choose \( x = g^{-1}hg \). Then,
+    \[
+    \varphi_g(x) = g(g^{-1}hg)g^{-1} = h.
+    \]\\
+    Hence, \( \varphi_g \) is surjective.
+\\
+\begin{enumerate}
+    \item[3. (a)] Given any group \( G \) and a subset \( U \), let \( H \) be the smallest subgroup of \( G \) which contains \( U \). Prove there is such a subgroup \( H \) in \( G \). (This \( H \) is called the subgroup generated by \( U \).)
+    \item[(b)] If \( gug^{-1} \in U \) for all \( g \in G \) and \( u \in U \), prove that \( H \) is a normal subgroup of \( G \).
+\end{enumerate} 
+\begin{enumerate}
+    \item[\textit{(a)}] 
+    Let \( U \subseteq G \). Consider the set of all subgroups of \( G \) that contain \( U \). This set is non-empty since \( G \) itself is a subgroup containing \( U \). Let \( H \) be the intersection of all these subgroups:
+    \[
+    H = \bigcap_{\substack{K \leq G \\ U \subseteq K}} K.
+    \]
+    The intersection of any collection of subgroups is itself a subgroup. Since \( U \subseteq K \) for each subgroup \( K \) in the intersection, \( U \subseteq H \). Therefore, \( H \) is a subgroup of \( G \) and is the smallest subgroup containing \( U \). Thus, such a subgroup \( H \) exists.
+    
+    \item[(b)] Let \( gug^{-1} \in U \) for all \( g \in G \) and \( u \in U \). Let \( H \) be the subgroup generated by \( U \). We need to show that \( H \) is normal in \( G \), i.e., \( ghg^{-1} \in H \) for all \( g \in G \) and \( h \in H \).
+    
+    Since \( H \) is the smallest subgroup containing \( U \), every element \( h \in H \) can be expressed as a finite product of elements of \( U \) and their inverses:
+    \[
+    h = u_1^{\epsilon_1} u_2^{\epsilon_2} \cdots u_n^{\epsilon_n},
+    \]
+    where \( u_i \in U \) and \( \epsilon_i = \pm 1 \).
+    
+    For any \( g \in G \),
+    \[
+    ghg^{-1} = g(u_1^{\epsilon_1} u_2^{\epsilon_2} \cdots u_n^{\epsilon_n})g^{-1}.
+    \]
+    Using the property \( gug^{-1} \in U \),
+    \[
+    ghg^{-1} = (gu_1^{\epsilon_1}g^{-1})(gu_2^{\epsilon_2}g^{-1}) \cdots (gu_n^{\epsilon_n}g^{-1}).
+    \]
+    Each term \( gu_i^{\epsilon_i}g^{-1} \in U \) or \( gu_i^{-\epsilon_i}g^{-1} \in U \) because \( U \) is closed under taking inverses and conjugation by \( g \).
+    
+    Therefore, \( ghg^{-1} \) is a product of elements of \( U \), and hence \( ghg^{-1} \in H \). Thus, \( H \) is normal in \( G \).\\\\
+\end{enumerate}
+4. If \( N \) and \( M \) are normal subgroups of \( G \), prove that \( NM / M \cong N / (N \cap M) \).
+\\
+Consider the homomorphism \(\varphi: N \to NM / M\) defined by \(\varphi(n) = nM\) for \(n \in N\).
+\\
+Since \(M\) is a normal subgroup of \(G\), for any \(m \in M\) and \(n \in N\),
+    \[
+    \varphi(nm) = (nm)M = n(mm^{-1})M = nM = \varphi(n).
+    \]
+For any \(n_1, n_2 \in N\),
+    \[
+    \varphi(n_1 n_2) = (n_1 n_2)M = n_1 M \cdot n_2 M = \varphi(n_1) \cdot \varphi(n_2).
+    \]
+The kernel of \(\varphi\) is
+    \[
+    \ker(\varphi) = \{n \in N \mid \varphi(n) = M\} = \{n \in N \mid nM = M\} = \{n \in N \mid n \in M\} = N \cap M.
+    \]
+The image of \(\varphi\) is
+    \[
+    \text{Im}(\varphi) = \{nM \mid n \in N\}.
+    \]
+    Since every element of \(NM\) can be written as \(nm\) for \(n \in N\) and \(m \in M\), and since \(\varphi(n) = nM\), we have that
+    \[
+    \text{Im}(\varphi) = \{nM \mid n \in N\} = \{nmM \mid n \in N, m \in M\} = NM/M.
+    \]
+    Therefore, \(\text{Im}(\varphi) = NM / M\).
+\\
+By the first isomorphism theorem, we have
+    \[
+    N / \ker(\varphi) \cong \text{Im}(\varphi).
+    \]
+    Substituting the kernel and image, we get
+    \[
+    N / (N \cap M) \cong NM / M.
+    \]
+\\
+Therefore, we have shown that \( NM / M \cong N / (N \cap M) \).
