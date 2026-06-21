@@ -1,0 +1,307 @@
+\chapter{Introduction to Groups}
+Groups are fundamental structures in abstract algebra that lay the groundwork for studying symmetry, transformations, and algebraic operations. They consist of a set of elements and a defined way to combine them, satisfying rules like closure (the result stays within the set), associativity (order of operations doesn't matter), identity (an element that doesn't change others), and invertibility (each element has an opposite).
+
+Groups are essential building blocks alongside rings, fields, and vector spaces. Studying groups introduces important algebraic concepts like homomorphisms (structure-preserving mappings) and quotient constructions (forming new groups from existing ones), which are crucial in abstract algebra and have wide applications in mathematics and beyond.
+
+The focus on groups in abstract algebra comes from their simplicity and broad usefulness. Starting with groups provides a strong foundation for exploring more complex algebraic structures. 
+
+Historically, groups were first studied in specific cases, such as permutations and symmetries, before being formally defined in the late 19th century. This abstract approach allows mathematicians to apply these concepts broadly, deepening our understanding of algebraic systems and supporting advances in both theoretical mathematics and practical applications.
+
+\section{Definition of a Group}
+\textbf{Definition:} 
+    A nonempty set of elements \(G\) is said to form a \textit{group} if in \(G\) there is defined a binary operation, called the product and denoted by $\cdot$, such that
+    \begin{enumerate}
+      \item Closure: a, b $\in$ \(G\) implies that a $\cdot$ b $\in$ \(G\). 
+      \item Associative: a, b, c $\in$ \(G\) implies that $a\cdot(b\cdot c)=(a\cdot b)\cdot c$.
+      \item Existence of an identity element in \(G\): There exist an element e $\in$ G such that $a\cdot e = e\cdot a = a$ for all a $\in$ \(G\).
+      \item Existence of inverses in \(G\): For every a $\in$ \(G\) there exist an element $a^{-1} \in G$ such that $a \cdot a^{-1} = a^{-1} \cdot a = e$.\\
+    \end{enumerate}
+\textbf{Definition:} 
+A group \(G\) is said to be \textit{abelian} or \textit{commutative} if for every \(a, b \in G\), \(a \cdot b = b \cdot a\).\\
+A group which is not abelian is called \textit{non-abelian}.\\\\
+\textbf{Order of a group:}
+The order of a finite group is its cardinality, i.e., the number of elements present in group \(G\). It is denoted by o(\(G\)). \\This number plays a key role in subgroup classification, group actions, and theoretical explorations within abstract algebra.
+
+\section{Some Examples of Groups}
+\textbf{1.} The set of integers \(\mathbb{Z}\) under addition, denoted as \((\mathbb{Z}, +)\), is a group.\\
+\textit{Closure:} For any integers \(a, b \in \mathbb{Z}\), \(a + b\) is also an integer.\\
+\textit{Associativity:} For all integers \(a, b, c \in \mathbb{Z}\), \(a + (b + c) = (a + b) + c\).\\
+\textit{Identity Element:} \(0\) is the identity element, as \(a + 0 = 0 + a = a\) for all \(a \in \mathbb{Z}\).\\
+\textit{Inverse Element:} For each \(a \in \mathbb{Z}\), there exists an element \(-a \in \mathbb{Z}\) such that \(a + (-a) = (-a) + a = 0\).\\
+Therefore, \((\mathbb{Z}, +)\) forms a group under addition.
+\\\\
+\textbf{2.} The set of integers modulo \( n \), denoted as \( \mathbb{Z}_n \), forms a group under addition modulo \( n \).
+\\
+\textit{Closure:} For any \( a, b \in \mathbb{Z}_n \), \( a +_n b \) (which is \( (a + b) \mod n \)) is also in \( \mathbb{Z}_n \).
+\\
+\textit{Associativity:} Addition modulo \( n \) is associative: \( (a +_n b) +_n c = a +_n (b +_n c) \) for all \( a, b, c \in \mathbb{Z}_n \).
+\\
+\textit{Identity Element:} The identity element in \( \mathbb{Z}_n \) under addition modulo \( n \) is \( 0 \): \( a +_n 0 = 0 +_n a = a \) for all \( a \in \mathbb{Z}_n \).
+\\
+\textit{Inverse Element:} Every element \( a \in \mathbb{Z}_n \) has an inverse under addition modulo \( n \), which is \( n - a \): \( a +_n (n - a) \equiv 0 \mod n \).
+\\
+Therefore, \( (\mathbb{Z}_n, +_n) \) forms a group under addition modulo \( n \).
+\section{Some Preliminary Lemmas}
+\newtheorem{lemma}{Lemma}
+
+\begin{lemma}
+If \( G \) is a group, then
+\begin{enumerate}
+    \item The identity element of \( G \) is unique.
+    \item Every \( a \in G \) has a unique inverse in \( G \).
+    \item For every \( a \in G \), \( (a^{-1})^{-1} = a \).
+    \item For all \( a, b \in G \), \( (a \cdot b)^{-1} = b^{-1} \cdot a^{-1} \).
+\end{enumerate}
+\end{lemma}
+\textbf{Proof.}
+\begin{enumerate}
+    \item Let \( e \) and \( e' \) be both identity elements in \( G \). By the definition of an identity element, we have:
+    \[ e \cdot e' = e \quad \text{and} \quad e' \cdot e = e'.\]
+    Therefore, \( e = e' \). Hence, the identity element in \( G \) is unique.
+    
+    \item Let \( a \in G \). Suppose \( b \) and \( c \) are both inverses of \( a \) in \( G \). Then, by definition of inverses, we have:
+    \[
+    a \cdot b = e \quad \text{and} \quad a \cdot c = e,
+    \]
+    where \( e \) is the identity element in \( G \). Multiplying both sides of \( a \cdot b = e \) on the right by \( c \), we get:
+    \[
+    a \cdot b \cdot c = e \cdot c = c.
+    \]
+    Since \( a \cdot c = e \), we have:
+    \[
+    a \cdot b \cdot c = e \cdot c = c = e \cdot b = b.
+    \]
+    Therefore, \( b = c \), proving that the inverse of \( a \) is unique.
+    
+    \item Let \( a \in G \). By definition, \( a^{-1} \) is the inverse of \( a \), so:
+    \[
+    a \cdot a^{-1} = e \quad \text{and} \quad a^{-1} \cdot a = e,
+    \]
+    where \( e \) is the identity element in \( G \). Let \( b = a^{-1} \). Then, by the same definition, \( b^{-1} \) is the inverse of \( b \), so:
+    \[
+    b \cdot b^{-1} = e \quad \text{and} \quad b^{-1} \cdot b = e.
+    \]
+    Substituting \( b = a^{-1} \), we get:
+    \[
+    a^{-1} \cdot (a^{-1})^{-1} = e \quad \text{and} \quad (a^{-1})^{-1} \cdot a^{-1} = e.
+    \]
+    Thus, \((a^{-1})^{-1} = a\).
+    
+    \item Let \( a, b \in G \). We need to show that \( (a \cdot b)^{-1} = b^{-1} \cdot a^{-1} \). We have:
+    \[
+    (a \cdot b) \cdot (b^{-1} \cdot a^{-1}) = a \cdot (b \cdot b^{-1}) \cdot a^{-1} = a \cdot e \cdot a^{-1} = a \cdot a^{-1} = e,
+    \]
+    and
+    \[
+    (b^{-1} \cdot a^{-1}) \cdot (a \cdot b) = b^{-1} \cdot (a^{-1} \cdot a) \cdot b = b^{-1} \cdot e \cdot b = b^{-1} \cdot b = e.
+    \]
+    Therefore, \( (a \cdot b)^{-1} = b^{-1} \cdot a^{-1} \).
+\end{enumerate}
+\begin{lemma}
+Given \( a, b \) in the group \( G \), then the equations \( a \cdot x = b \) and \( y \cdot a = b \) have unique solutions for \( x \) and \( y \) in \( G \). In particular, the two cancellation laws hold in \( G \):
+\begin{enumerate}
+    \item \( a \cdot u = a \cdot w \implies u = w \),
+    \item \( u \cdot a = w \cdot a \implies u = w \).
+\end{enumerate}
+\end{lemma}
+\textbf{Proof.}
+Let \( a, b \in G \) and consider the equation \( a \cdot x = b \).
+
+Since \( G \) is a group, every element \( a \in G \) has an inverse \( a^{-1} \in G \) such that \( a \cdot a^{-1} = e \) and \( a^{-1} \cdot a = e \), where \( e \) is the identity element in \( G \).
+
+To solve \( a \cdot x = b \) for \( x \), multiply both sides on the left by \( a^{-1} \):
+
+\[
+a^{-1} \cdot (a \cdot x) = a^{-1} \cdot b.
+\]
+
+Using the associativity property of the group operation, we get:
+
+\[
+(a^{-1} \cdot a) \cdot x = a^{-1} \cdot b.
+\]
+
+Since \( a^{-1} \cdot a = e \), we have:
+
+\[
+e \cdot x = a^{-1} \cdot b,
+\]
+
+and since \( e \cdot x = x \), it follows that:
+
+\[
+x = a^{-1} \cdot b.
+\]
+
+Thus, the equation \( a \cdot x = b \) has a unique solution \( x = a^{-1} \cdot b \).
+
+Similarly, consider the equation \( y \cdot a = b \). To solve for \( y \), multiply both sides on the right by \( a^{-1} \):
+
+\[
+(y \cdot a) \cdot a^{-1} = b \cdot a^{-1}.
+\]
+
+Using associativity, we get:
+
+\[
+y \cdot (a \cdot a^{-1}) = b \cdot a^{-1}.
+\]
+
+Since \( a \cdot a^{-1} = e \), we have:
+
+\[
+y \cdot e = b \cdot a^{-1},
+\]
+
+and since \( y \cdot e = y \), it follows that:
+
+\[
+y = b \cdot a^{-1}.
+\]
+
+Thus, the equation \( y \cdot a = b \) has a unique solution \( y = b \cdot a^{-1} \).
+
+To prove the cancellation laws, let \( a \cdot u = a \cdot w \). Multiplying both sides on the left by \( a^{-1} \), we get:
+
+\[a^{-1} \cdot (a \cdot u) = a^{-1} \cdot (a \cdot w).
+\]
+
+Using associativity and the property \( a^{-1} \cdot a = e \), we obtain:
+
+\[
+(e \cdot u) = (e \cdot w),
+\]
+
+which simplifies to:
+
+\[
+u = w.
+\]
+
+For the second cancellation law, let \( u \cdot a = w \cdot a \). Multiplying both sides on the right by \( a^{-1} \), we get:
+
+\[
+(u \cdot a) \cdot a^{-1} = (w \cdot a) \cdot a^{-1}.
+\]
+
+Using associativity and the property \( a \cdot a^{-1} = e \), we obtain:
+
+\[
+u \cdot (a \cdot a^{-1}) = w \cdot (a \cdot a^{-1}),
+\]
+
+which simplifies to:
+
+\[
+u \cdot e = w \cdot e,
+\]
+
+and since \( u \cdot e = u \) and \( w \cdot e = w \), it follows that:
+
+\[
+u = w.
+\]
+
+Thus, both cancellation laws hold in \( G \).
+
+
+\section{Few Examples}
+1. Consider the set \( G = \{ 1, a, a^2, a^3 \} \), where \( a \) is an element such that \( a^4 = 1 \) (the identity element). Define the operation as multiplication modulo 4. Determine whether \( G \) forms a group under this operation. If it does, verify whether \( G \) is abelian.
+\\
+\textit{Closure:} To verify closure under multiplication modulo 4:
+\begin{align*}
+    1 \cdot 1 &\equiv 1 \mod 4, \\
+    1 \cdot a &\equiv a \mod 4, \\
+    1 \cdot a^2 &\equiv a^2 \mod 4, \\
+    1 \cdot a^3 &\equiv a^3 \mod 4, \\
+    a \cdot a &\equiv a^2 \mod 4, \\
+    a \cdot a^2 &\equiv a^3 \mod 4, \\
+    a \cdot a^3 &\equiv 1 \mod 4, \\
+    a^2 \cdot a^2 &\equiv a^3 \mod 4, \\
+    a^2 \cdot a^3 &\equiv 1 \mod 4, \\
+    a^3 \cdot a^3 &\equiv a \mod 4.
+\end{align*}
+Since each product \( g \cdot h \mod 4 \) is in \( G \), \( G \) is closed under the defined operation.\\
+\textit{Identity Element:}
+The element \( 1 \) serves as the identity:
+\[ 1 \cdot g \equiv g \cdot 1 \equiv g \mod 4 \quad \text{for all } g \in G. \]
+\textit{Inverses:}
+\[ 1^{-1} = 1, \quad a^{-1} = a^3 \, \text{(since \( a \cdot a^3 \equiv 1 \mod 4 \))}, \]
+\[ (a^2)^{-1} = a^2 \, \text{(since \( a^2 \cdot a^2 \equiv 1 \mod 4 \))}, \]
+\[ (a^3)^{-1} = a \, \text{(since \( a^3 \cdot a \equiv 1 \mod 4 \))}. \]
+\\
+\textit{Associativity:}
+Multiplication modulo 4 is associative by definition of modular arithmetic.
+\\
+\textit{Abelianness:}
+\[ 1 \cdot a = a \cdot 1, \quad 1 \cdot a^2 = a^2 \cdot 1, \quad 1 \cdot a^3 = a^3 \cdot 1, \]
+\[ a \cdot a^2 = a^2 \cdot a, \quad a \cdot a^3 = a^3 \cdot a, \quad a^2 \cdot a^3 = a^3 \cdot a^2. \]
+Since all products commute, \( G \) is abelian.
+\\
+Therefore, \( G = \{ 1, a, a^2, a^3 \} \) forms a group under multiplication modulo 4 and is abelian.\\
+\\
+2. Prove that if \( G \) is an abelian group, then for all \( a, b \in G \) and all integers \( n \),
+\[ (a \cdot b)^n = a^n \cdot b^n. \]
+{Proof.}
+Assume that \( G \) is an abelian group. We aim to prove that for all \( a, b \in G \) and all integers \( n \),
+\[ (a \cdot b)^n = a^n \cdot b^n. \]
+
+For \( n = 2 \):
+\[ (a \cdot b)^2 = (a \cdot b)(a \cdot b) = a \cdot b \cdot a \cdot b = a \cdot a \cdot b \cdot b = a^2 \cdot b^2. \]
+
+Let \( (a \cdot b)^{n-1} = a^{n-1} \cdot b^{n-1} \).
+
+We prove that \( (a \cdot b)^n = a^n \cdot b^n \):
+\[ (a \cdot b)^n = (a \cdot b)^{n-1} \cdot (a \cdot b) = a^{n-1} \cdot b^{n-1} \cdot (a \cdot b) = a^{n-1} \cdot a \cdot b^{n-1} \cdot b = a^n \cdot b^n. \]
+
+Therefore, if \( G \) is an abelian group, for all \( a, b \in G \) and all integers \( n \),
+\[ (a \cdot b)^n = a^n \cdot b^n. \]
+\\\\
+3. If a finite set \( G \) is closed under an associative product and both cancellation laws hold, then \( G \) is a group.
+\\
+{Proof.}
+Let \( G \) be a finite set that is closed under an associative product and satisfies both cancellation laws:
+\\
+\textit{Existence of Identity:} There exists an element \( e \in G \) such that for all \( a \in G \), \( a \cdot e = e \cdot a = a \).
+  \\  
+\textit{Existence of Inverse:} For each \( a \in G \), there exists an element \( a^{-1} \in G \) such that \( a \cdot a^{-1} = a^{-1} \cdot a = e \).
+\\
+Therefore, \( G \) with the defined product operation, associative property, closure, identity element \( e \), and inverses for all elements forms a group.
+
+Hence, if a finite set \( G \) is closed under an associative product and both cancellation laws hold, then \( G \) is a group.
+\\
+\\
+4. Let \( G = \{ 1, -1, i, -i \} \) where \( i \) is the imaginary unit with \( i^2 = -1 \). Define the operation as multiplication of complex numbers. Determine whether \( G \) forms a group under this operation. If it does, verify whether \( G \) is abelian.
+\\
+\textit{Closure:}
+To verify closure under multiplication of complex numbers:
+\begin{align*}
+    1 \cdot 1 &= 1, \\
+    1 \cdot (-1) &= -1, \\
+    1 \cdot i &= i, \\
+    1 \cdot (-i) &= -i, \\
+    (-1) \cdot (-1) &= 1, \\
+    (-1) \cdot i &= -i, \\
+    (-1) \cdot (-i) &= i, \\
+    i \cdot i &= -1, \\
+    i \cdot (-i) &= -i, \\
+    (-i) \cdot (-i) &= -1.
+\end{align*}
+Since each product \( g \cdot h \) is in \( G \), \( G \) is closed under the defined operation.
+\\
+\textit{Identity Element:}
+The element \( 1 \) serves as the identity:
+\[ 1 \cdot g = g \cdot 1 = g \quad \text{for all } g \in G. \]
+\\
+\textit{Inverses:}
+\[ 1^{-1} = 1, \quad (-1)^{-1} = -1, \quad i^{-1} = -i, \quad (-i)^{-1} = i. \]
+Each element in \( G \) has an inverse within \( G \).
+\\
+\textit{Associativity:}
+Multiplication of complex numbers is associative.
+\\
+\textit{Abelianness:}
+\[ 1 \cdot g = g \cdot 1 \quad \text{for all } g \in G. \]
+Since all products commute, \( G \) is abelian.
+
+Therefore, \( G = \{ 1, -1, i, -i \} \) forms a group under multiplication of complex numbers and is abelian.
