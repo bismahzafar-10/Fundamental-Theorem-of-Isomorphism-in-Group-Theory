@@ -1,0 +1,234 @@
+\chapter{Normal Subgroups and Quotient Groups}
+In group theory, not all subgroups $H$ of a group $G$ have the property that left cosets $aH$ equal right cosets $Ha$ for every $a \in G$. However, recognizing those subgroups where this equality holds has been of critical importance since Galois identified them as worthy of special attention approximately 175 years ago.
+\section{Normal Subgroups}
+\textbf{Definition: } A subgroup $N$ of a group $G$ is said to be a \textit{normal subgroup} of $G$ if for every $g \in G$ and $n \in N$, the element $gng^{-1} \in N$.
+\\\\
+\textbf{Lemma 1:} $N$ is a normal subgroup of $G$ if and only if $gNg^{-1} = N$ for every $g \in G$.
+\\
+\textbf{Proof.}
+\\
+ \( N \) is a normal subgroup of \( G \) \( \Rightarrow \) \( gNg^{-1} = N \) for every \( g \in G \)
+
+Let \( N \) is a normal subgroup of \( G \). By definition, for every \( g \in G \), \( gNg^{-1} = N \).
+
+\( gNg^{-1} = N \) for every \( g \in G \) \( \Rightarrow \) \( N \) is a normal subgroup of \( G \)
+
+Assume \( gNg^{-1} = N \) for every \( g \in G \).\\
+Now, to prove that \( N \) is normal, we need to show \( gNg^{-1} \subseteq N \) and \( gNg^{-1} \supseteq N \) for all \( g \in G \).
+
+\( gNg^{-1} \subseteq N \): Given \( gNg^{-1} = N \), for any \( n \in N \), there exists some \( n' \in N \) such that \( gng^{-1} = n' \). 
+
+Hence, \( gng^{-1} \in N \).
+  
+\( gNg^{-1} \supseteq N \): Conversely, for any \( n \in N \), we have \( gng^{-1} = n' \) for some \( n' \in N \), which implies \( gng^{-1} \in N \).
+
+
+Therefore, \( gNg^{-1} = N \) implies that \( N \) is closed under conjugation by any element \( g \in G \), which is the definition of being a normal subgroup.
+
+Hence, we have shown both directions of the proof, establishing that \( N \) is a normal subgroup of \( G \) if and only if \( gNg^{-1} = N \) for every \( g \in G \).
+\\\\
+\textbf{Lemma 2: }The subgroup \( N \) of \( G \) is a normal subgroup of \( G \) if and only if every left coset of \( N \) in \( G \) is a right coset of \( N \) in \( G \).\\
+\textbf{Proof.} Let \( N \) is a normal subgroup of \( G \). \\
+Let \( H \) be a normal subgroup of \( G \). Then, for all \( g \in G \) and \( h \in H \),
+\[ ghg^{-1} \in H. \]
+
+Let \( x \in ghg^{-1} \). Since \( ghg^{-1} \in H \), it follows that \( x \in H \).
+
+Now, consider any \( y \in H \). We have \( g^{-1}yg \in H \) because \( H \) is normal in \( G \).
+
+Therefore, \( y = g^{-1}(ghg^{-1})g \). Since \( h \in H \), \( y = g^{-1}hg \in H \).
+
+Thus, \( H \subseteq gHg^{-1} \).
+
+Now, consider any \( y \in gHg^{-1} \). Then, \( y = g(h'g^{-1}) \) for some \( h' \in H \).
+
+Hence, \( y = gh'g^{-1} \) and \( y \in H \).
+
+Therefore, \( gHg^{-1} \subseteq H \).
+
+Consequently, \( gHg^{-1} = H \).
+\\
+Now, let \( gN = Ng \) for every \( g \in G \)
+
+For any \( g \in G \), the left coset \( gN \) is also a right coset. Therefore, there exists some \( h \in G \) such that \( gN = Nh \).
+
+Now, consider \( gng^{-1} \) for \( n \in N \):
+\[ gng^{-1} = gng^{-1}g \cdot g^{-1} = (gng^{-1})g \]
+
+Since \( gN = Nh \), there exists \( n' \in N \) such that \( gng^{-1} = nh \).
+
+Therefore, \( gng^{-1} \in N \) for all \( g \in G \) and \( n \in N \), which proves that \( N \) is normal in \( G \).
+\\
+Hence proved.\\
+\\
+\textbf{Lemma 3:} A subgroup \( N \) of \( G \) is a normal subgroup of \( G \) if and only if the product of two right cosets of \( N \) in \( G \) is again a right coset of \( N \) in \( G \).
+\\
+\textbf{Proof.}
+\\
+Let \( N \) be a normal subgroup of \( G \). Then for any \( g \in G \) and \( n \in N \), \( gng^{-1} \in N \).
+
+Let \( g_1N \) and \( g_2N \) be right cosets of \( N \) in \( G \). Their product is:
+\[ g_1Ng_2N = (g_1g_2)N \]
+
+Since \( N \) is normal, \( g_1g_2N = (g_1g_2)N \), which is a right coset of \( N \) in \( G \).
+\\
+Now let \( g_1N \cdot g_2N = (g_1g_2)N \), is again a right coset of \( N \) in \( G \).
+
+For any \( g \in G \) and \( n \in N \), consider \( gng^{-1} \):
+\[ gng^{-1} = gng_1g_1^{-1}g_1g_2g_2^{-1} = (gng_1)(g_1^{-1}g_1g_2)g_2^{-1} \]
+
+Since \( g_1N \cdot g_2N = (g_1g_2)N \), \( g_1g_2N = (g_1g_2)N \), implying \( gng^{-1} \in N \).
+
+Therefore, \( N \) is normal in \( G \).
+\\Hence proved.
+\section{Quotient Groups}
+\textbf{THEOREM 1:} If \( G \) is a group and \( N \) is a normal subgroup of \( G \), then \( G/N \) is also a group. It is called the quotient group or factor group of \( G \) by \( N \).
+\\
+\textbf{Proof.} To show that \( G/N \) is a group, we need to verify the following:
+\\\textit{Closure:} For any \( gN, hN \in G/N \), the product \( (gN)(hN) = (gh)N \) is well-defined and belongs to \( G/N \). Since \( N \) is normal in \( G \), \( gh \in G \) and thus \( (gh)N \in G/N \).
+\\
+\textit{Associativity:} The operation \( (gN)(hN) = (gh)N \) inherits associativity from \( G \).
+\\
+\textit{Identity Element:} The identity element in \( G/N \) is \( eN = N \), where \( e \) is the identity element of \( G \). For any \( gN \in G/N \),
+   \[ (gN)(eN) = (ge)N = gN \]
+   \[ (eN)(gN) = (eg)N = gN \]
+   Therefore, \( eN \) acts as the identity element in \( G/N \).
+\\
+\textit{Inverse Element:} For any \( gN \in G/N \), the inverse element is \( (gN)^{-1} = (g^{-1})N \). This is because
+   \[ (gN)(g^{-1}N) = (gg^{-1})N = eN = N \]
+   \[ (g^{-1}N)(gN) = (g^{-1}g)N = eN = N \]
+
+Thus, \( G/N \) satisfies all the properties of a group, confirming that \( G/N \) is indeed a group. It is known as the quotient group or factor group of \( G \) by \( N \).
+\\\\
+\textbf{Lemma 4:} If \( G \) is a finite group and \( N \) is a normal subgroup of \( G \), then \( |G/N| = \frac{|G|}{|N|} \).
+\\
+\textbf{Proof.} Since \( N \) is a normal subgroup of \( G \), the quotient group \( G/N \) is well-defined and finite because \( G \) is finite.
+
+By definition, \( |G/N| \), the order of the quotient group \( G/N \), is equal to the index of \( N \) in \( G \), denoted as \( [G : N] \), which is the number of distinct cosets of \( N \) in \( G \).
+
+According to Lagrange's theorem:
+\[ |G| = |N| \cdot |G/N| \]
+
+Dividing both sides by \( |N| \), we get:
+\[ |G/N| = \frac{|G|}{|N|} \]
+
+Thus, \( |G/N| = \frac{|G|}{|N|} \).
+\\
+\section{Few Examples}
+1. If \( G \) is a group and \( H \) is a subgroup of index 2 in \( G \), prove that \( H \) is a normal subgroup of \( G \).
+\\
+Let \( G \) be a group and \( H \) a subgroup of \( G \) with index 2. This means that there are exactly two distinct left cosets of \( H \) in \( G \), which we can denote as \( H \) and \( gH \) for some \( g \in G \).
+
+Since the index of \( H \) in \( G \) is 2, the left cosets and the right cosets of \( H \) must coincide, meaning \( G \) can be partitioned into two right cosets as well: \( H \) and \( Hg \).\\
+\textit{Case 1:} \( x \in H \):
+   \[
+   xHx^{-1} = Hx^{-1} \subseteq H
+   \]
+   Since \( H \) is a subgroup, \( x^{-1} \in H \) and thus \( Hx^{-1} = H \).
+\\
+\textit{Case 2: }\( x \in gH \) where \( g \notin H \):
+   \[
+   x = gh \text{ for some } h \in H
+   \]
+   Then,
+   \[
+   xHx^{-1} = (gh)H(gh)^{-1} = ghHh^{-1}g^{-1} = gHg^{-1} \subseteq G
+   \]
+Since \( x = gh \in gH \) is arbitrary, \( gHg^{-1} \) must form a subgroup of \( G \). As there are only two cosets and both must have the same order, it must also be true that \( gHg^{-1} = H \).
+Hence, \( H \) is normal in \( G \).
+\\
+Thus, \( H \) is a normal subgroup of \( G \).
+\\
+\\
+2. Suppose \( H \) is the only subgroup of order \( |H| \) in the finite group \( G \). Prove that \( H \) is a normal subgroup of \( G \).
+\\
+Let \( g \in G \) be any element. Consider the conjugate subgroup \( gHg^{-1} \). The order of the subgroup \( gHg^{-1} \) is the same as the order of \( H \), i.e., \( |gHg^{-1}| = |H| \).
+
+Since \( H \) is the only subgroup of \( G \) with order \( |H| \), it follows that \( gHg^{-1} \) must be equal to \( H \). In other words,
+\[
+gHg^{-1} = H \quad \text{for all} \quad g \in G.
+\]
+Hence, \( H \) is a normal subgroup of \( G \).
+\\
+\\
+3. If a cyclic subgroup \( T \) of \( G \) is normal in \( G \), then show that every subgroup of \( T \) is normal in \( G \).
+\\
+Let \( G \) be a group and \( T \) a cyclic subgroup of \( G \) that is normal in \( G \). This means \( gTg^{-1} = T \) for all \( g \in G \).
+
+Let \( H \) be any subgroup of \( T \). We need to show that \( H \) is normal in \( G \), i.e., \( gHg^{-1} = H \) for all \( g \in G \).
+
+Since \( T \) is cyclic, there exists an element \( t \in G \) such that \( T = \langle t \rangle \). Let \( H \) be generated by \( t^k \) for some integer \( k \), i.e., \( H = \langle t^k \rangle \).
+
+For any \( g \in G \), we have:
+\[ gHg^{-1} = g \langle t^k \rangle g^{-1} = \langle gt^kg^{-1} \rangle \]
+
+Since \( T \) is normal in \( G \), we know \( gTg^{-1} = T \). Therefore, \( gtg^{-1} \in T \).
+
+Because \( gtg^{-1} \in T \) and \( T \) is cyclic, \( gtg^{-1} = t^m \) for some integer \( m \).
+
+Let \( h \in H \). Since \( H \) is generated by \( t^k \), we have \( h = (t^k)^n = t^{kn} \) for some integer \( n \).
+
+Then,
+\[ ghg^{-1} = g(t^{kn})g^{-1} = (gtg^{-1})^{kn} = (t^m)^{kn} = t^{mkn} \]
+
+Since \( t^{mkn} \in \langle t^k \rangle = H \), it follows that \( gHg^{-1} \subseteq H \).
+
+By similar arguments for the inverse, we have \( g^{-1}Hg \subseteq H \).
+
+Therefore,
+\[ gHg^{-1} = H \]
+
+This shows that \( H \) is normal in \( G \).
+\\
+Hence, if a cyclic subgroup \( T \) of \( G \) is normal in \( G \), then every subgroup of \( T \) is normal in \( G \).
+\\
+\\
+4. Let \( G \) be a group in which, for some integer \( n > 1 \), \( (ab)^n = a^n b^n \) for all \( a, b \in G \). Show that \\
+(a) \( G^{(n)} = \{ x^n \mid x \in G \} \) is a normal subgroup of \( G \).\\ 
+(b) \( G^{(n!)} = \{ x^{n!} \mid x \in G \} \) is a normal subgroup of \( G \).
+\\
+{(a)}\textit{Identity:} The identity element \( e \in G \) satisfies \( e^n = e \), so \( e \in G^{(n)} \).
+\\
+\textit{Closure:} For any \( a, b \in G \), \( a^n, b^n \in G^{(n)} \).
+   \[
+   (a^n b^n) = (ab)^n \quad \text{(given that \( (ab)^n = a^n b^n \))}
+   \]
+   Therefore, \( (ab)^n \in G^{(n)} \).
+   \\
+\textit{Inverses:} For any \( a \in G \), \( a^n \in G^{(n)} \). We need to show that \( (a^n)^{-1} \in G^{(n)} \):
+   \[
+   (a^n)^{-1} = (a^{-1})^n
+   \]
+   Therefore, \( (a^n)^{-1} \in G^{(n)} \).
+
+Next, we show that \( G^{(n)} \) is normal in \( G \):
+For any \( g \in G \) and \( x^n \in G^{(n)} \),
+\[
+g x^n g^{-1} = (gxg^{-1})^n
+\]
+Since \( gxg^{-1} \in G \), \( (gxg^{-1})^n \in G^{(n)} \).
+
+Therefore, \( g x^n g^{-1} \in G^{(n)} \), which means \( G^{(n)} \) is normal in \( G \).
+\\
+{(b)} \textit{Identity:} The identity element \( e \in G \) satisfies \( e^{n!} = e \), so \( e \in G^{(n!)} \).
+\\
+\textit{Closure:} For any \( a, b \in G \), \( a^{n!}, b^{n!} \in G^{(n!)} \). We need to show that \( (a^{n!} b^{n!}) \in G^{(n!)} \):
+   \[
+   (a^{n!} b^{n!}) = (ab)^{n!} \quad \text{(since \( (ab)^n = a^n b^n \) implies \( (ab)^{n!} = a^{n!} b^{n!} \))}
+   \]
+   Therefore, \( (ab)^{n!} \in G^{(n!)} \).
+\\
+\textit{Inverses:} For any \( a \in G \), \( a^{n!} \in G^{(n!)} \). We need to show that \( (a^{n!})^{-1} \in G^{(n!)} \):
+   \[
+   (a^{n!})^{-1} = (a^{-1})^{n!}
+   \]
+   Therefore, \( (a^{n!})^{-1} \in G^{(n!)} \).
+
+Next, we show that \( G^{(n!)} \) is normal in \( G \):
+For any \( g \in G \) and \( x^{n!} \in G^{(n!)} \),
+\[
+g x^{n!} g^{-1} = (gxg^{-1})^{n!}
+\]
+Since \( gxg^{-1} \in G \), \( (gxg^{-1})^{n!} \in G^{(n!)} \).
+
+Therefore, \( g x^{n!} g^{-1} \in G^{(n!)} \), which implies \( G^{(n!)} \) is normal in \( G \).
