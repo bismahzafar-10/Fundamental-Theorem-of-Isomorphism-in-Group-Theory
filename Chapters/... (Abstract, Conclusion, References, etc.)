@@ -1,0 +1,68 @@
+\begin{center}
+    \Large \bf {Abstract}\\
+\end{center}
+
+This report provides an extensive exploration of the Fundamental Theorem of Homomorphisms in group theory, a fundamental concept with profound implications across mathematics. Beginning with the foundational definitions and properties of groups, including illustrative examples to solidify understanding, we establish the groundwork necessary for deeper exploration. Subsequent sections delve into subgroups, emphasizing cyclic groups and their significance in the context of group theory. The concept of cosets is introduced, followed by an examination of normal subgroups and quotient groups, elucidating their roles in group structure and manipulation.
+\\
+\\
+
+Central to this report is the comprehensive discussion on homomorphisms—functions that preserve the structure of groups—beginning with their definition and extending to their diverse applications. The Fundamental Theorem of Homomorphisms is the focal point, offering a profound insight into the relationship between homomorphisms, their kernels, and the quotient groups they induce. Through detailed proofs, examples, and practical applications, the theorem's theoretical underpinnings and practical utility are thoroughly explored.
+
+\begin{center}
+{\Large \bf Declaration}
+\end{center}
+
+I hereby declare that I am the sole author of this Reading Project Report in fulfillment of the requirements for Summer Internship from National Institute of Science Education
+and Research (NISER).
+\vskip1.0in
+\hspace*{2.5in} {Signature of the Student}\\
+\hspace*{2.5in}{Date:}
+\vskip1.0in
+
+
+The Project Report work entitled "Fundamental Theorem of Isomorphism in Group Theory"
+was carried out under my supervision, in the School of Mathematical Sciences
+at NISER, Bhubaneswar, India.
+
+\vskip1.0in
+
+\hspace*{2.5in} {Signature of the Supervisor} \\
+\hspace*{2.5in} {School of Mathematical Sciences}\\
+\hspace*{2.5in} {Date:}
+
+
+
+\chapter{Conclusion}
+
+In conclusion, this report has navigated the intricate landscape of the Fundamental Theorem of Homomorphisms, highlighting its significance and applications within group theory. Beginning with the foundational elements of groups, subgroups, and cosets, we laid a robust foundation for understanding more complex concepts. The exploration of normal subgroups and quotient groups provided a deeper understanding of the structural hierarchy within groups.
+\\
+\\
+
+Homomorphisms were then introduced as pivotal mappings that preserve group structure, leading to a detailed exposition of their kernels and images. The Fundamental Theorem of Homomorphisms was rigorously examined, emphasizing its role in connecting the kernel of a homomorphism to the structure of its corresponding quotient group. Through a series of examples and applications, we demonstrated how this theorem facilitates the analysis and classification of groups in diverse mathematical contexts.
+\\
+\\
+
+By synthesizing these concepts and illustrating their practical implications, this report aimed to enhance the understanding and appreciation of the Fundamental Theorem of Homomorphisms, showcasing its profound impact on abstract algebra and its applications across various disciplines within mathematics.
+
+
+\chapter{References}
+\begin{biblist}
+\large
+\bib{Herstein:2006}{book}{
+    author={Herstein, I.N.},
+    title={Topics in Algebra},
+    edition={2nd},
+    publisher={Wiley},
+    year={2006},
+}
+\large
+\bib{Gallian:2016}{book}{
+    author={Gallian, Joseph A.},
+    title={Contemporary Abstract Algebra},
+    edition={9th},
+    publisher={Cengage Learning},
+    year={2016},
+}
+
+\end{biblist}
+
