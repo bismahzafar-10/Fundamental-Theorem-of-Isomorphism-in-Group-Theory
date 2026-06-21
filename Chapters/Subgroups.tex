@@ -1,0 +1,513 @@
+\chapter{Subgroups}
+Before delving into the study of groups, we will slightly modify our notation for simplicity. Using the $\cdot$ for the group operation can be cumbersome, so we will henceforth omit it. Instead of writing \(a \cdot b\) for elements \(a\) and \(b\) in \(G\), we will simply write \(ab\).
+
+In general, we will not focus on arbitrary subsets of a group \(G\), as they do not necessarily reflect the algebraic structure of \(G\). Instead, we will consider subsets that possess algebraic properties derived from those of \(G\). 
+
+\section{Definition of a Subgroup}
+\textbf{Definition:}
+A nonempty subset \(H\) of a group \(G\) is a subgroup, denoted as \(H \leq G\), if \(H\) itself forms a group under the operation defined on \(G\).
+
+Subgroups are important because they retain the group operation from \(G\) and help us understand the structure and properties of the larger group.
+They are key to many important theorems and concepts in group theory.\\
+\textbf{\textit{Remark:}}
+{If \(H\) is a subgroup of \(G\) and \(K\) is a subgroup of \(H\), then \(K\) is a subgroup of G.}\\
+\\
+\textbf{Lemma 1:} A nonempty subset \(H\) of the group \(G\) is a subgroup of \(G\) if and only if:
+\begin{enumerate}
+    \item \(a, b \in H\) implies that \(ab \in H\).
+    \item \(a \in H\) implies that \(a^{-1} \in H\).
+\end{enumerate}
+\textbf{Proof.}\\
+Given that \(H \leq G\), for any \(a, b \in H\), the product \(ab\) is also in \(H\), satisfying (1). Moreover, each element \(a \in H\) has an inverse \(a^{-1}\) in \(H\), satisfying (2). Therefore, \(H\) fulfills both conditions required to be a subgroup of \(G\).\\
+Let \(H\) be a nonempty subset of \(G\) such that for all \(a, b \in H\), \(ab \in H\) and for all \(a \in H\), \(a^{-1} \in H\). \\
+\textit{Claim:} \(H \leq G\)\\
+\textit{Existence of Identity:} Since \(H\) is nonempty, there exists \(e \in H\) such that \(ea = ae = a\) for all \(a \in H\)\\
+\textit{Closure under Inverses:} For each \(a \in H\), \(a^{-1} \in H\) ensures closure under inverses.
+\\
+\textit{Closure under Group Operation:} For \(a, b \in H\), \(ab \in H\) follows from closure under the group operation of \(G\).\\
+Thus, \(H\) satisfies all the criteria to be a subgroup of \(G\).
+Therefore, a nonempty subset \(H\) of the group \(G\) is a subgroup of \(G\) if and only if conditions (1) and (2) hold.\\
+\\
+\textbf{Lemma 2:} If \( H \subseteq G \) is a nonempty finite subset of a group \( G \) and \( H \) is closed under the group operation of \( G \), then \( H \) is a subgroup of \( G \).\\
+\textbf{Proof.}\\
+Since \( H \) is closed under the group operation and nonempty, we need to show that \( H \) satisfies the subgroup criteria:\\
+\textit{Existence of Identity:} Since \( H \) is nonempty and closed under the group operation, there exists an identity element \( e \in H \) such that \( eh = he = h \) for all \( h \in H \).
+\\
+\textit{Closure under Inverses:} For each \( h \in H \), since \( H \) is closed under the group operation, \( h^{-1} \in H \).
+\\
+\textit{Closure under Group Operation:} For \( h_1, h_2 \in H \), \( h_1 h_2 \in H \) follows from the closure of \( H \) under the group operation of \( G \).
+\\
+Thus, \( H \) satisfies all the criteria to be a subgroup of \( G \).
+\\
+Therefore, if \( H \subseteq G \) is a nonempty finite subset of a group \( G \) and \( H \) is closed under the group operation of \( G \), then \( H \) is a subgroup of \( G \).
+
+\section{Some Examples of Subgroups}
+1. Subgroup of Non-Zero Rational Numbers under Multiplication
+\\
+$\mathbb{Q}^*$, the set of all non-zero rational numbers.
+\\
+$\langle \frac{1}{2} \rangle = \left\{ \left( \frac{1}{2} \right)^n \mid n \in \mathbb{Z} \right\}$, the set of all powers of $\frac{1}{2}$.
+\\
+\textit{Closure:} For any $\left( \frac{1}{2} \right)^m, \left( \frac{1}{2} \right)^n \in \langle \frac{1}{2} \rangle$, $\left( \frac{1}{2} \right)^m \cdot \left( \frac{1}{2} \right)^n = \left( \frac{1}{2} \right)^{m+n} \in \langle \frac{1}{2} \rangle$.
+\\
+\textit{Associativity:} Multiplication of rational numbers is associative.
+\\
+\textit{Identity Element:} $1$ is the identity element in $\mathbb{Q}^*$, and $1 \in \langle \frac{1}{2} \rangle$.
+\\
+\textit{Inverse Element:} For any $\left( \frac{1}{2} \right)^n \in \langle \frac{1}{2} \rangle$, $\left( \frac{1}{2} \right)^{-n} = 2^n \in \langle \frac{1}{2} \rangle$.
+\\
+Therefore, $\langle \frac{1}{2} \rangle$ is a subgroup of $(\mathbb{Q}^*, \cdot)$.
+\\
+\\
+2. Subgroup of Symmetric Group\\
+$S_3$ = $\{1, 2, 3\}$\\
+\(H\) = $\{ e, (12) \}$\\
+\textit{Closure:} $(12)(12) = e$ (identity permutation) and $e(12) = (12)e = (12)$.
+\\
+\textit{Associativity:} Composition of permutations is associative.
+\\
+\textit{Identity Element:} $e$ is the identity permutation.
+\\
+\textit{Inverse Element:} $(12)^2 = e$.
+\\
+Therefore, $\{ e, (12) \}$ is a subgroup of $S_3$.
+
+
+\section{Cyclic Groups}
+Cyclic groups are fundamental in group theory, characterized by their generation through a single element.\\
+\textbf{Definition:} A cyclic group \( G \) is generated by an element \( a \), where every element can be expressed as \( a^n \), for \( n \) ranging over all integers.\\
+\textit{\textbf{Example:}} \( \mathbb{Z}_{10} \) is cyclic.
+In \( \mathbb{Z}_{10} \):
+One example of a generator (or a cyclic element) is \( 1 \).
+Let's verify:
+
+
+\( 1^1 = 1 \)
+
+\( 1^2 = 1 \)
+
+\( 1^3 = 1 \)
+
+...
+
+\( 1^{10} = 1 \) (since we are in \( \mathbb{Z}_{10} \))
+
+Therefore, \( 1 \) generates all elements in \( \mathbb{Z}_{10} \). Hence, \( \mathbb{Z}_{10} \) is cyclic, and \( \langle 1 \rangle = \mathbb{Z}_{10} \).
+
+
+\section{Equivalence Relations}
+\textbf{Equivalence Relation:}\\
+An equivalence relation \( \sim \) on a set \( G \) satisfies the following properties for elements \( a, b, c \in G \):
+\begin{itemize}
+    \item Reflexivity: \( a \sim a \)
+    \item Symmetry: If \( a \sim b \), then \( b \sim a \)
+    \item Transitivity: If \( a \sim b \) and \( b \sim c \), then \( a \sim c \)
+\end{itemize}
+\textbf{Equivalence Class:}
+Let \( G \) be a group and \( \sim \) an equivalence relation on \( G \). The equivalence class of an element \( a \in G \) is denoted by \( [a] \) and defined as:
+\[ [a] = \{ g \in G \mid g \sim a \} \]
+This means \( [a] \) consists of all elements in \( G \) that are equivalent to \( a \) under the relation \( \sim \).\\
+\textit{Example: }Consider the group \( \mathbb{Z} \) and the equivalence relation \( \equiv \pmod{n} \) (congruence modulo \( n \)). The equivalence class of an integer \( a \) is: \[ [a] = \{ b \in \mathbb{Z} \mid a \equiv b \pmod{n} \} \]
+\\
+\textbf{Lemma 3: }Equivalence Classes are either disjoint or equal.\\
+\textbf{Proof.} Let \( G \) be a set and \( \sim \) an equivalence relation on \( G \).\\
+\textit{Disjoint Equivalence Classes:}
+
+Let \( x, y \in G \) are such that \( [x] \neq [y] \). To prove that \( [x] \cap [y] = \emptyset \), consider any element \( z \in [x] \cap [y] \). By definition of intersection, \( z \in [x] \) and \( z \in [y] \).
+
+Since \( [x] \) and \( [y] \) are equivalence classes, \( z \sim x \) and \( z \sim y \). By the properties of equivalence relations:
+\begin{itemize}
+    \item \( z \sim x \) implies \( [z] = [x] \).
+    \item \( z \sim y \) implies \( [z] = [y] \).
+\end{itemize}
+Therefore, \( [x] = [y] \), contradicting our assumption \( [x] \neq [y] \). Hence, \( [x] \cap [y] = \emptyset \), showing that disjoint equivalence classes cannot share any elements.
+\textit{Equal Equivalence Classes:}
+
+Now suppose \( [x] = [y] \). To prove equality, take any \( z \in [x] \). Since \( [x] = [y] \), \( z \sim x \), which implies \( z \sim y \). Hence, \( z \in [y] \).
+
+Conversely, take any \( w \in [y] \). Since \( [y] = [x] \), \( w \sim y \), which implies \( w \sim x \). Hence, \( w \in [x] \).
+
+Therefore, \( [x] \subseteq [y] \) and \( [y] \subseteq [x] \), proving \( [x] = [y] \).\\
+Equivalence Classes under an equivalence relation \( \sim \) on a set \( G \) are either disjoint or equal. This property is fundamental in the partitioning of \( G \) into distinct subsets based on their equivalence under \( \sim \).
+\\\\
+\textbf{Lemma 4: }Equivalence Classes partition the set.
+\\
+\textbf{Proof.}
+Let \( S = \{ [a] \mid a \in A \} \), where \( A \) is a nonempty set and \( \sim \) is an equivalence relation on \( A \).
+\[ [a] = \{ x \in A \mid x \sim a \} \text{ for a nonempty set } A, a \in A. \]
+
+Since \( \sim \) is an equivalence relation:
+
+For all \( a \in A \), \( a \sim a \) (reflexive property), hence \( a \sim [a] \), so \( [a] \neq \emptyset \).
+
+Take \( x \in A \). Then \( x \sim [x] \) (reflexive property), meaning \( x \) belongs to at least one equivalence class.
+
+Let \( x \in [a] \) and \( x \in [b] \). Then \( x \sim a \) and \( x \sim b \).
+\( a \sim x \) and \( x \sim b \) imply \( a \sim b \), which implies \( [a] = [b] \).
+
+This shows that \( x \) must belong to a unique equivalence class. Thus, \( S \) partitions the set \( A \).
+\\\\
+\textbf{Definition:} Let \( G \) be a group, \( H \) a subgroup of \( G \). For \( a, b \in G \), we say \textit{\( a \) is congruent to \( b \)} mod \( H \), written as \( a \equiv b \pmod{H} \), if \( ab^{-1} \in H \).
+\\\\
+\textbf{Lemma 5:} The relation \( a \equiv b \pmod{H} \) is an equivalence relation.\\
+\textbf{Proof.}
+To prove that \( \equiv \pmod{H} \) is an equivalence relation, we need to verify three properties:
+
+    \textit{Reflexivity:} For any \( a \in G \), \( a \equiv a \pmod{H} \). This holds because \( a^{-1} a = e \in H \), so \( a \equiv a \pmod{H} \).
+    
+    \textit{Symmetry:} If \( a \equiv b \pmod{H} \), then \( b \equiv a \pmod{H} \). This follows since \( ab^{-1} \in H \) implies \( (ab^{-1})^{-1} = (b^{-1}a)^{-1} = a^{-1}(b^{-1})^{-1} = a^{-1}b \in H \), hence \( b \equiv a \pmod{H} \).
+    
+    \textit{Transitivity:} If \( a \equiv b \pmod{H} \) and \( b \equiv c \pmod{H} \), then \( a \equiv c \pmod{H} \). Suppose \( ab^{-1} \in H \) and \( bc^{-1} \in H \). Then \( (ab^{-1})(bc^{-1}) = a(b^{-1}b)c^{-1} = aec^{-1} = ac^{-1} \in H \), so \( a \equiv c \pmod{H} \).
+\\
+Therefore, \( \equiv \pmod{H} \) satisfies the reflexive, symmetric, and transitive properties, confirming it is an equivalence relation.
+
+
+\section{Cosets}
+\textbf{Definition:} Let \( G \) be a group and \( H \leq G \) be a subgroup. Then, for \( a \in G \):
+\[Ha = \{ ha \mid h \in H \} \quad \text{is called the right coset of \( H \) in \( G \)}\]
+\[aH = \{ ah \mid h \in H \}\quad \text{is called the left coset of \( H \) in \( G \)}\]
+\textit{\textbf{Remark:}} Equivalence classes and cosets both use partitioning principles to define quotient structures. Equivalence classes group elements by shared properties, while cosets partition groups by subgroup operations, highlighting symmetry in group theory. Together, they are powerful tools for understanding relationships and symmetry in mathematics.
+\\\\
+\textbf{Properties of Right Cosets}\\
+Let \( H \) be a subgroup of \( G \), and let \( a, b \in G \). Then:
+
+\begin{enumerate}
+    \item \( a \in Ha \),
+    \item \( Ha = H \) if and only if \( a \in H \),
+    \item \( Ha = Hb \) if and only if \( a \in Hb \),
+    \item \( Ha \subseteq Hb \) if and only if \( ab^{-1} \in H \),
+    \item \( Ha = Hb \) if and only if \( a^{-1}b \in H \),
+    \item \( |Ha| = |Hb| \),
+    \item \( Ha = aH \) if and only if \( H = aHa^{-1} \),
+    \item \( Ha \) is a subgroup of \( G \) if and only if \( a \in H \).
+\end{enumerate}
+
+\textbf{Proof.}
+
+\begin{enumerate}
+    \item \( a = ea \in Ha \).
+    \item To prove property 2, suppose \( Ha = H \). Then \( a \in Ha = H \). Conversely, if \( a \in H \), then \( Ha \subseteq H \) and \( H \subseteq Ha \) follows from \( H \)'s closure.
+    \item If \( Ha = Hb \), then \( a \in Ha = Hb \). Conversely, if \( a \in Hb \), then \( a = bh \) for some \( h \in H \), so \( Ha = H(bh^{-1}) = Hb \).
+    \item Property 4 follows from property 3, since if \( c \in Ha \cap Hb \), then \( cH = Ha \) and \( cH = Hb \).
+    \item \( Ha = Hb \) if and only if \( a^{-1}b \in H \), which follows from property 2.
+    \item To show \( |Ha| = |Hb| \), define a one-to-one mapping \( ha \mapsto hb \) from \( Ha \) to \( Hb \), which is one-to-one by the cancellation property.
+    \item \( Ha = aH \) if and only if \( (Ha)a^{-1} = (aH)a^{-1} = H \), hence \( aHa^{-1} = H \).
+    \item If \( Ha \) is a subgroup, it contains the identity \( e \), so \( Ha \supseteq He = H \). By property 4, \( Ha = eH = H \). Thus, if \( a \in H \), then \( Ha = H \), and conversely, if \( Ha = H \), then \( a \in H \).
+\end{enumerate}
+\textbf{Lemma 6:} For all \( a \in G \),
+\[ Ha = \{ x \in G \mid a \equiv x \mod H \}. \]
+\textbf{Proof.}
+Let \([a] = \{ x \in G \mid a \equiv x \mod H \}\). We first show that \( Ha \subseteq [a] \).
+
+For \( h \in H \), we have 
+\[ a(ha)^{-1} = a(a^{-1}h^{-1}) = h^{-1} \in H \]
+since \( H \) is a subgroup of \( G \). By the definition of congruence mod \( H \), this implies that \( ha \in [a] \) for every \( h \in H \). Thus, \( Ha \subseteq [a] \).
+
+Now, suppose \( x \in [a] \). This means \( ax^{-1} \in H \), so 
+\[ (ax^{-1})^{-1} = xa^{-1} \]
+is also in \( H \). Therefore, \( xa^{-1} = h \) for some \( h \in H \). Multiplying both sides by \( a \), we get 
+\[ x = ha, \]
+and thus \( x \in Ha \). Therefore, \( [a] \subseteq Ha \).
+
+Since we have shown both \( [a] \subseteq Ha \) and \( Ha \subseteq [a] \), we conclude that 
+\[ [a] = Ha, \]
+which is the assertion of the lemma.
+\\\\
+\textbf{Lemma 7:} There is a one-to-one correspondence between any two right cosets of a subgroup \( H \) in \( G \).
+\\
+\textbf{Proof.}
+Let \( aH \) and \( bH \) be arbitrary right cosets of \( H \) in \( G \). Define a mapping \( \phi: aH \to bH \) by \( \phi(x) = bx \) for all \( x \in aH \).
+
+\textit{Well-defined:} Suppose \( x \in aH \). Then \( x = ah \) for some \( h \in H \). Hence, \( \phi(x) = bx = b(ah) = (ba)h \in bH \), showing \( \phi(x) \in bH \) does not depend on the choice of representative \( ah \).
+
+\textit{Injectivity:} Suppose \( \phi(x_1) = \phi(x_2) \). Then \( bx_1 = bx_2 \), implying \( b(x_1 x_2^{-1}) = e \), where \( e \) is the identity in \( G \). Therefore, \( x_1 = x_2 \), proving \( \phi \) is injective.
+
+\textit{Surjectivity:} For any \( y \in bH \), there exists \( x \in aH \) such that \( \phi(x) = y \) (specifically, \( x = b^{-1}y \in aH \)), proving \( \phi \) is surjective.
+
+Thus, \( \phi \) is a well-defined bijection between \( aH \) and \( bH \), establishing a one-to-one correspondence between any two right cosets of \( H \) in \( G \).
+
+
+\section{Some Examples of Cosets}
+1. Cosets in $\mathbb{Z}/6\mathbb{Z}$\\
+{Group:} $(\mathbb{Z}/6\mathbb{Z}, +_6)$, where $\mathbb{Z}/6\mathbb{Z}$ denotes integers modulo $6$.
+\\
+{Subgroup:} $H = \{0, 2, 4\} +_6$, the subgroup of elements $0, 2, 4$ modulo $6$.
+\[ 0 +_6 H = \{ 0 +_6 0, 0 +_6 2, 0 +_6 4 \} = \{ 0, 2, 4 \} \]
+\[ 1 +_6 H = \{ 1 +_6 0, 1 +_6 2, 1 +_6 4 \} = \{ 1, 3, 5 \} \]
+\[ 2 +_6 H = \{ 2 +_6 0, 2 +_6 2, 2 +_6 4 \} = \{ 2, 4, 0 \} = \{ 0, 2, 4 \} \]
+\\\\
+2. Cosets in $S_4$
+\\
+{Group:} $S_4$, the symmetric group on $\{1, 2, 3, 4\}$.
+\\
+{Subgroup:} $H = \langle (1234) \rangle$, where $(1234)$ is a cycle permutation.
+\[ eH = \{ e \cdot e, e \cdot (1234) \} = \{ e, (1234) \} \]
+\[ (12)H = \{ (12) \cdot e, (12) \cdot (1234) \} = \{ (12), (12)(1234) \} \]
+\[ (34)H = \{ (34) \cdot e, (34) \cdot (1234) \} = \{ (34), (34)(1234) \} \]
+
+
+
+
+
+\section{Lagrange's Theorem}
+
+\textbf{Index of a Group: } If \( H \) is a subgroup of \( G \), the index of \( H \) in \( G \), denoted \( [G : H] \) or \( i_G(H) \), is the number of distinct right cosets of \( H \) in \( G \).\\
+If \( G \) is a finite group, then for \( H \) a subgroup of \( G \):
+\[ i_G(H) = \frac{|G|}{|H|}. \]
+\\
+\textbf{THEOREM 1:} Let \( G \) be a finite group and \( H \) be a subgroup of \( G \). Then the order of \( H \), denoted \( |H| \), divides the order of \( G \), denoted \( |G| \).
+\[ |G| = [G : H] \cdot |H|, \]
+where \( [G : H] \) denotes the index of \( H \) in \( G \), the number of distinct cosets of \( H \) in \( G \).\\
+\textbf{Proof.}
+Let \( aH = \{ ha \mid h \in H \} \) denote the right coset of \( H \) generated by \( a \). These cosets form an equivalence relation \( \sim \) on \( G \), where each equivalence class \( Ha \) is disjoint. 
+
+Since the cosets \( Ha \) partition \( G \), we have:
+\[ G = \bigcup_{i=1}^{n} Ha_i \]
+where \( Ha_i \) are distinct right cosets of \( H \).
+
+Each coset \( Ha_i \) has the same cardinality as \( H \), denoted \( |H| \). Therefore, the order of \( G \), denoted \( |G| \), is the sum of the cardinalities of these cosets:
+\[ |G| = |Ha_1| + |Ha_2| + \ldots + |Ha_n| = n \cdot |H|. \]
+
+Thus, \( |G| \) is a multiple of \( |H| \), which means \( |H| \) divides \( |G| \):
+\[ |G| = k \cdot |H| \] for some integer \( k \).\\
+Therefore, \( |H| \) divides \( |G| \), as required.\\\\
+Lagrange's theorem has some very important corollaries. Before we present these we make one definition.\\\\
+\textbf{Definition:} If \( G \) is a group and \( a \in G \), the \textit{order (or period)} of \( a \) is the least positive integer \( m \) such that \( a^m = e \), where \( e \) is the identity element of \( G \).\\\\
+\textbf{Corollary 1:} If \( G \) is a finite group and \( a \in G \), then \( o(a) \mid |G| \).\\
+\textbf{Proof.} Let \( \langle a \rangle \) denote the cyclic subgroup of \( G \) generated by \( a \), consisting of elements \( e, a, a^2, \ldots, a^{o(a)-1} \), where \( o(a) \) is the order of \( a \). Since \( a^{o(a)} = e \), \( \langle a \rangle \) contains \( o(a) \) elements.
+
+By Lagrange's theorem, the order of any subgroup divides the order of the group. Therefore, \( o(a) \mid |G| \), where \( |G| \) represents the order of the group \( G \). Thus, \( o(a) \), the order of \( a \), divides the order of \( G \), as required.
+\\
+\\
+\textbf{Corollary 2:} If \( G \) is a finite group and \( a \in G \), then \( a^{|G|} = e \).
+\\
+\textbf{Proof.} By Corollary 1, \( |G| = m \cdot o(a) \) for some integer \( m \).
+Therefore,
+\[ a^{|G|} = a^{m \cdot o(a)} = (a^{o(a)})^m = e^m = e. \]
+\textbf{Corollary 3 (Euler's Theorem):} If \( n \) is a positive integer and \( a \) is coprime to \( n \), then \( a^{\phi(n)} \equiv 1 \pmod{n} \).
+\\
+\textbf{Proof.} Euler's theorem is a direct consequence of the properties of Euler's totient function \( \phi(n) \), which counts integers coprime to \( n \). By Lagrange's theorem, we know that the order of any subgroup divides the order of the group. 
+
+Earlier, we established that for a finite group \( G \) and a subgroup \( H \), the index of \( H \) in \( G \), denoted as \( [G : H] \), represents the number of distinct right cosets of \( H \) in \( G \). Furthermore, Corollary 1 and Corollary 2 demonstrated that for any element \( a \) in a finite group \( G \), \( \mathrm{o}(a) \) divides \( \mathrm{o}(G) \).
+Now, applying these concepts to number theory, Euler's theorem extends the understanding to modular arithmetic. Specifically, for any integer \( a \) coprime to \( n \),
+\[ a^{\phi(n)} \equiv 1 \pmod{n}. \]
+\\
+\textbf{Corollary 4 (Fermat's Little Theorem):} If \( p \) is a prime number and \( a \) is any integer, then \( a^p \equiv a \pmod{p} \).\\
+\textbf{Proof.} To apply Corollary 2, consider \( a \) modulo \( p \). If \( a \) is relatively prime to \( p \), then by Corollary 3 (Euler's theorem), \( a^{\phi(p)} \equiv 1 \pmod{p} \). Since \( \phi(p) = p - 1 \), we have \( a^{p-1} \equiv 1 \pmod{p} \). Multiplying both sides by \( a \), we get \( a^p \equiv a \pmod{p} \).
+
+If \( a \) is not relatively prime to \( p \), then \( p \) divides \( a \). Hence, \( a \equiv 0 \pmod{p} \), and consequently \( a^p \equiv 0 \equiv a \pmod{p} \).
+
+Thus, \( a^p \equiv a \pmod{p} \) holds true in all cases, proving Fermat's Little Theorem.
+\\\\
+\textbf{Corollary 5:} If \( G \) is a finite group whose order is a prime number \( p \), then \( G \) is a \textit{cyclic group}.
+\\
+\textbf{Proof.} Let \( G \) be a finite group with \( |G| = p \), where \( p \) is a prime number. We will show that \( G \) is cyclic.
+
+Let \( H \) is a subgroup of \( G \). By Lagrange's Theorem, \( |H| \) must divide \( |G| = p \). The only divisors of \( p \) are \( 1 \) and \( p \). Therefore, \( |H| = 1 \) or \( |H| = p \).
+
+If \( |H| = 1 \), then \( H = \{e\} \), the trivial subgroup.
+
+If \( |H| = p \), then \( H = G \) since the order of a subgroup equal to the order of the group implies the subgroup is the entire group.
+
+Consider an element \( a \in G \) with \( a \neq e \). Let \( H = \langle a \rangle \) be the cyclic subgroup generated by \( a \). Since \( H \) is a subgroup and \( a \neq e \), \( H \) is non-trivial, so \( |H| = p \). Hence, \( H = G \).
+
+Thus, every element of \( G \) can be expressed as a power of \( a \), showing that \( G \) is cyclic with \( a \) as a generator.
+
+Therefore, if \( |G| = p \) and \( p \) is a prime, \( G \) is a cyclic group.
+
+\section{A Counting Principle}
+\textbf{Lemma 8:} \( HK \) is a subgroup of \( G \) if and only if \( HK = KH \).
+\\
+\textbf{Proof.}
+Let \( HK = KH \)
+
+\textit{Claim:} \( HK \) is a subgroup
+
+For closure, let \( x = hk \in HK \) and \( y = h'k' \in HK \). Then \( xy = hk \cdot h'k' \). Since \( KH = HK \), we can write \( kh' = h_2k_2 \) with \( h_2 \in H \) and \( k_2 \in K \). Therefore,
+\[ xy = h(h_2k_2)k' = (hh_2)(k_2k') \in HK, \]
+proving closure.
+
+For inverses, let \( x = hk \in HK \). Then 
+\[ x^{-1} = (hk)^{-1} = k^{-1}h^{-1}. \]
+Since \( KH = HK \), \( k^{-1}h^{-1} \in KH = HK \). Hence, \( x^{-1} \in HK \). Therefore, \( HK \) contains inverses.
+Thus, \( HK \) is a subgroup.
+
+Let \( HK \) is a subgroup of \( G \)
+
+Let \( HK \) is a subgroup. To show \( HK = KH \), first note that for any \( h \in H \) and \( k \in K \), \( kh \in HK \). Since \( HK \) is a subgroup, \( k^{-1}h^{-1} \in HK \). Therefore,
+\[ (kh)^{-1} = h^{-1}k^{-1} \in HK, \]
+implying \( kh \in HK \). Thus, \( KH \subseteq HK \).
+
+Now, take any \( x = hk \in HK \). Since \( HK \) is a subgroup,
+\[ x^{-1} = (hk)^{-1} = k^{-1}h^{-1} \in HK. \]
+Then
+\[ (k^{-1}h^{-1})^{-1} = hk \in KH, \]
+implying \( x = hk \in KH \). Thus, \( HK \subseteq KH \).
+
+Since \( KH \subseteq HK \) and \( HK \subseteq KH \), we conclude \( HK = KH \).
+
+Therefore, \( HK \) is a subgroup of \( G \) if and only if \( HK = KH \).
+\\\\
+\textbf{Corollary 5:} If \( H \) and \( K \) are subgroups of the abelian group \( G \), then \( HK \) is a subgroup of \( G \).
+\\
+\textbf{Proof.} Since \( G \) is abelian, the operation is commutative, meaning \( gh = hg \) for all \( g, h \in G \). This implies that for any \( h \in H \) and \( k \in K \), \( hk = kh \). 
+
+We need to show that \( HK = \{ hk \mid h \in H, k \in K \} \) is a subgroup of \( G \). To do this, we must verify that \( HK \) is closed under the group operation and that every element in \( HK \) has an inverse in \( HK \).
+
+\textit{Closure:} Let \( x = hk \in HK \) and \( y = h'k' \in HK \). Then,
+\[
+xy = hk \cdot h'k' = hkh'k'.
+\]
+Since \( G \) is abelian, we can rearrange to get:
+\[
+xy = hh'kk'.
+\]
+Since \( hh' \in H \) and \( kk' \in K \) (because \( H \) and \( K \) are subgroups and thus closed under the group operation), we have \( hh' \in H \) and \( kk' \in K \), so:
+\[
+xy \in HK.
+\]
+Thus, \( HK \) is closed under the group operation.
+
+\textit{Inverses:} Let \( x = hk \in HK \). Then,
+\[
+x^{-1} = (hk)^{-1} = k^{-1}h^{-1}.
+\]
+Since \( G \) is abelian, we have:
+\[
+k^{-1}h^{-1} = h^{-1}k^{-1}.
+\]
+Since \( H \) and \( K \) are subgroups, \( h^{-1} \in H \) and \( k^{-1} \in K \). Therefore,
+\[
+x^{-1} \in HK.
+\]
+Thus, \( HK \) contains the inverses of its elements.
+
+Since \( HK \) is closed under the group operation and contains the inverses of its elements, \( HK \) is a subgroup of \( G \).
+\\\\
+\textbf{THEOREM 2:} If $H$ and $K$ are finite subgroups of $G$ of orders $o(H)$ and $o(K)$, respectively, then 
+\[ o(HK) = \frac{o(H) o(K)}{o(H \cap K)} \]
+\textbf{Proof.}
+To prove the theorem, consider the subgroup $HK$ generated by all products $hk$, where $h \in H$ and $k \in K$.
+
+$HK$ is a subgroup of $G$ because it is closed under the group operation: for any $h, h' \in H$ and $k, k' \in K$, $(hk)(h'k') = (hh')(k(k')^{-1}) \in HK$.
+
+Each element $hk$ in $HK$ is distinct because if $hk = h'k'$, then $h'^{-1}h = k'k^{-1} \in H \cap K$. Therefore, $h = h'$ and $k = k'$, ensuring uniqueness.
+
+The order $o(HK)$ is the number of distinct elements in $HK$. Since $H \times K$ has $o(H) \cdot o(K)$ elements, and each corresponds uniquely to an element in $HK$, we have $o(HK) = o(H) \cdot o(K)$.
+
+Consider $H \cap K$, the intersection of $H$ and $K$. For every $h \in H \cap K$, $hk = h(h^{-1}k)$. This shows that each element $hk$ in $HK$ can be represented uniquely by $h \in H \cap K$. Hence, the number of distinct elements in $HK$ is reduced by $o(H \cap K)$.
+
+Therefore, $o(HK)$, the order of $HK$, is given by $o(HK) = \frac{o(H) \cdot o(K)}{o(H \cap K)}$.
+\\\\
+\textbf{Corollary 6:} If $H$ and $K$ are subgroups of $G$ such that $o(H) > \sqrt{o(G)}$ and $o(K) > \sqrt{o(G)}$, then $H \cap K \neq \{e\}$.
+\\
+\textbf{Proof.}
+\\
+Given that $o(H) > \sqrt{o(G)}$ and $o(K) > \sqrt{o(G)}$, we apply Theorem 2.5.1.
+
+From Theorem above, we know:
+\[ o(HK) = \frac{o(H) o(K)}{o(H \cap K)} \]
+
+Since $o(H) > \sqrt{o(G)}$ and $o(K) > \sqrt{o(G)}$, it follows that:
+\[ o(H) \cdot o(K) > \sqrt{o(G)} \cdot \sqrt{o(G)} = o(G) \]
+
+Therefore, the order of the subgroup $HK$ is greater than the order of $G$.
+
+However, $HK$ is a subgroup of $G$, so its order cannot exceed $o(G)$.
+
+This contradiction implies that our initial assumption must be incorrect. Therefore, we conclude that $H \cap K \neq \{e\}$.
+\\\\
+\textit{\textbf{Application:}} Consider \( G \) as a finite group of order \( pq \), where \( p \) and \( q \) are primes with \( p > q \). Applying the corollary, there can be at most one subgroup of order \( p \). If \( H \) and \( K \) are such subgroups, \( H \cap K \neq \{e\} \) implies \( H = K \), establishing that there is exactly one subgroup of order \( p \) in \( G \). This insight helps in determining the complete structure of \( G \).
+
+\section{Few Examples}
+1. Let $G$ be a group, $W$ a subset of $G$. Let $(W)$ be the set of all elements of $G$ representable as a product of elements of $W$ raised to positive, zero, or negative integer exponents. $(W)$ is the subgroup of $G$ generated by $W$ and is the smallest subgroup of $G$ containing $W$. In fact, $(W)$ is the intersection of all the subgroups of $G$ which contain $W$ (this intersection is not vacuous since $G$ is a subgroup of $G$ which contains $W$).\\
+\textit{Subgroup Generated by $W$:} Denoted $\langle W \rangle$, it consists of all elements of $G$ that can be expressed as finite products (including inverses) of elements from $W$. In mathematical terms:
+
+\[
+\langle W \rangle = \left\{ w_1^{e_1} w_2^{e_2} \cdots w_n^{e_n} \mid w_i \in W, e_i \in \mathbb{Z}, n \in \mathbb{N} \right\}
+\]
+
+Here, $\mathbb{Z}$ denotes the set of all integers, $\mathbb{N}$ denotes the set of all natural numbers, and $w_i^{e_i}$ represents the element $w_i$ raised to the power $e_i$.
+\\
+\textit{Smallest Subgroup Containing $W$:} $\langle W \rangle$ is indeed the smallest subgroup of $G$ that contains $W$. This means any subgroup of $G$ containing $W$ must also contain $\langle W \rangle$.
+\\
+\textit{Intersection of Subgroups:} $\langle W \rangle$ can also be defined as the intersection of all subgroups of $G$ that contain $W$. This intersection is non-empty because $G$ itself is a subgroup containing $W$.
+\\
+\\
+2. {(a)} If \( H \) is a subgroup of \( G \), and \( a \in G \), let \( aHa^{-1} = \{ aha^{-1} \mid h \in H \} \). Show that \( aHa^{-1} \) is a subgroup of \( G \).
+
+{(b)} If \( H \) is finite, what is \( |aHa^{-1}| \)?
+Let \( H \) be a subgroup of \( G \), and let \( a \in G \). Define \( aHa^{-1} = \{ aha^{-1} \mid h \in H \} \).
+\\
+\textit{Closure:} For any \( h_1, h_2 \in H \),
+\[ a h_1 a^{-1} \cdot a h_2 a^{-1} = a h_1 h_2 a^{-1} \]
+Since \( H \) is closed under its operation, \( h_1 h_2 \in H \), so \( a h_1 h_2 a^{-1} \in aHa^{-1} \).
+\\
+\textit{Identity element:} \( a e a^{-1} = a a^{-1} = e \), where \( e \) is the identity element of \( G \). Thus, \( e \in aHa^{-1} \).
+\\
+\textit{Inverse:} For any \( h \in H \),
+\[ (aha^{-1})^{-1} = (a^{-1})^{-1} h^{-1} a^{-1} = a h^{-1} a^{-1} \]
+Since \( h^{-1} \in H \), \( a h^{-1} a^{-1} \in aHa^{-1} \).
+
+Therefore, \( aHa^{-1} \) satisfies the subgroup criteria and is a subgroup of \( G \).\\
+
+If \( H \) is finite, \( |aHa^{-1}| \) denotes the cardinality of the set \( aHa^{-1} \).
+
+Each element \( aha^{-1} \in aHa^{-1} \) corresponds uniquely to \( h \in H \). Therefore, \( |aHa^{-1}| = |H| \).
+
+Thus, \( |aHa^{-1}| = |H| \), where \( |H| \) is the order (number of elements) of the subgroup \( H \).
+\\
+\\
+3. Let \( a \) and \( b \) be non-identity elements of different orders in a group \( G \) of order 155. Prove that the only subgroup of \( G \) that contains \( a \) and \( b \) is \( G \) itself.
+
+Let \( H \) be a non-trivial subgroup of \( G \) containing both \( a \) and \( b \).\\
+By Lagrange’s theorem, \( |H| \) must divide the order of \( G \). Since \( |G| = 155 \), the possible orders of \( H \) are 1, 5, 31, or 155.
+
+If \( |H| = 5 \), then \( H \) is cyclic and all non-identity elements of \( H \) have order 5. 
+
+Similarly, if \( |H| = 31 \), then all non-identity elements of \( H \) have order 31.
+
+Since \( a \) and \( b \) have different orders, neither \( |H| = 5 \) nor \( |H| = 31 \) can be true. \\
+Therefore, \( |H| = 155 \) and \( H = G \).
+\\
+\\
+4. Show that \( U_8 \) is not a cyclic group.\\
+The group of units modulo 8, denoted \( U_8 \), consists of the elements that are coprime to 8. These elements are:
+\[ U_8 = \{1, 3, 5, 7\} \]
+
+To determine if \( U_8 \) is a cyclic group, we need to see if there exists an element in \( U_8 \) that generates the entire group. 
+
+The order of 1:
+  \[
+  1^1 \equiv 1 \pmod{8}
+  \]
+  So, the order of 1 is 1.
+
+The order of 3:
+  \[
+  3^1 \equiv 3 \pmod{8}
+  \]
+  \[
+  3^2 \equiv 9 \equiv 1 \pmod{8}
+  \]
+  So, the order of 3 is 2.
+
+The order of 5:
+  \[
+  5^1 \equiv 5 \pmod{8}
+  \]
+  \[
+  5^2 \equiv 25 \equiv 1 \pmod{8}
+  \]
+  So, the order of 5 is 2.
+
+The order of 7:
+  \[
+  7^1 \equiv 7 \pmod{8}
+  \]
+  \[
+  7^2 \equiv 49 \equiv 1 \pmod{8}
+  \]
+  So, the order of 7 is 2.
+
+Since none of the elements in \( U_8 \) have an order of 4, which is the size of the group, there is no element in \( U_8 \) that can generate the entire group. Therefore, \( U_8 \) is not a cyclic group.
