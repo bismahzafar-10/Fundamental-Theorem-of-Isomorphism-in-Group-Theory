@@ -11,7 +11,7 @@ This repository contains the complete research report, source LaTeX files, and s
 
 ## 📑 Read the Full Report
 The complete, professionally typeset research project report can be read directly here:
-📄 **[Download/View Project Report PDF](./Project_Report.pdf)**
+📄 **[Download/View Project Report PDF](./Project%Report.pdf)**
 
 ---
 
