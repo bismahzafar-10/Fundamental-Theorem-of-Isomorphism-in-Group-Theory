@@ -11,7 +11,7 @@ This repository contains the complete research report, source LaTeX files, and s
 
 ## 📑 Read the Full Report
 The complete, professionally typeset research project report can be read directly here:
-📄 **[Download/View Project Report PDF](./Project%Report.pdf)**
+📄 **[Download/View Project Report PDF](./Project%20Report.pdf)**
 
 ---
 
@@ -32,19 +32,15 @@ Let $G$ and $H$ be groups, and let $\phi: G \to H$ be a group homomorphism. The 
 This structure is elegantly captured by the following commutative diagram mapping the canonical projection ($\pi$) and the induced isomorphism ($\bar{\phi}$):
 
 
-\begin{tikzcd}
-g \arrow[r] \arrow[d] & \phi(g) \\
-Kg \arrow[ur, dashed, "\psi"']
-\end{tikzcd}
-
-φ
-G ----------> H
-|          ^
-|          |
-π |          | ι
-v          |
-G/Ker(φ) ----+
-~_φ
+```
+          φ
+    G ----------> H
+    |          ^
+    |         /
+  π |        / ψ (Isomorphism)
+    v       /
+  G/Ker(φ)
+```
 
 ### Report Roadmap & Structural Chapters:
 1. **Introduction to Group Theory:** Establishing foundational axioms, symmetric structures, cyclic groups, and permutation frameworks.
